@@ -1,3 +1,5 @@
+#ifndef __NP2_SCRNMNG_H__
+#define __NP2_SCRNMNG_H__
 
 enum {
 	RGB24_B	= 2,
@@ -67,3 +69,4 @@ UINT16 scrnmng_makepal16(RGB32 pal32);
 }
 #endif
 
+#endif

@@ -1,4 +1,4 @@
-#include	<QuickTime/QuickTime.h>
+//#include	<QuickTime/QuickTime.h>
 #include	<CoreMIDI/MIDIServices.h>
 #define CFSTRj(name)	CFStringCreateWithCString(NULL,name,CFStringGetSystemEncoding())
 
