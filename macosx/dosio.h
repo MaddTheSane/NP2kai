@@ -1,9 +1,11 @@
+#ifndef __NP2_DOSIO_H__
+#define __NP2_DOSIO_H__
 
 enum {
 	FTYPE_INI		= -1		// Tool Window iniファイル
 };
 
-#define	FILEH			SInt16
+#define	FILEH			FSIORefNum
 #define	FILEH_INVALID	((FILEH)-1)
 
 #define	FLISTH				void *
@@ -64,6 +66,7 @@ void dosio_term(void);
 FILEH file_open(const char *path);
 FILEH file_open_rb(const char *path);
 FILEH file_create(const char *path);
+short file_rename(const OEMCHAR* lpExistFile, const OEMCHAR* lpNewFile);
 long file_seek(FILEH handle, long pointer, int method);
 UINT file_read(FILEH handle, void *data, UINT length);
 UINT file_write(FILEH handle, const void *data, UINT length);
@@ -73,6 +76,7 @@ short file_getdatetime(FILEH handle, DOSDATE *dosdate, DOSTIME *dostime);
 short file_delete(const char *path);
 short file_attr(const char *path);
 short file_dircreate(const char *path);
+short file_dirdelete(const OEMCHAR* lpPathName);
 
 											// カレントファイル操作
 void file_setcd(const char *exepath);
@@ -102,3 +106,4 @@ void file_setseparator(char *path, int maxlen);
 }
 #endif
 
+#endif

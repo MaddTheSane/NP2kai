@@ -20,6 +20,22 @@ static UINT ncwrite(COMMNG self, BYTE data) {
 	return(0);
 }
 
+static UINT ncwriteretry(COMMNG self)
+{
+
+	(void)self;
+
+	return 1;
+}
+
+static UINT nclastwritesuccess(COMMNG self)
+{
+
+	(void)self;
+
+	return 1;
+}
+
 static BYTE ncgetstat(COMMNG self) {
 
 	(void)self;
@@ -38,7 +54,7 @@ static void ncrelease(COMMNG self) {
 }
 
 static const _COMMNG com_nc = {
-		COMCONNECT_OFF, ncread, ncwrite, ncgetstat, ncmsg, ncrelease};
+		COMCONNECT_OFF, ncread, ncwrite, ncwriteretry, nclastwritesuccess, ncgetstat, ncmsg, ncrelease};
 
 
 // ----

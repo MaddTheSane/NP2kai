@@ -37,6 +37,8 @@ void ini_write(const char *path, const char *title,
 void initload(void);
 void initsave(void);
 
+void initgetfile(OEMCHAR *lpPath, unsigned int cchPath);
+
 #ifdef __cplusplus
 }
 #endif

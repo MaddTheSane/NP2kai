@@ -1,8 +1,8 @@
 /* Localized versions of Info.plist keys */
 
 CFBundleShortVersionString = "バージョン 0.81";
-CFBundleGetInfoString = "ねこープロジェクトIIx バージョン 0.81 by ねこさん開発チーム, 1999-2001,2003-2005";
-CFBundleName = "ねこープロジェクトIIx";
+CFBundleGetInfoString = "ねこープロジェクト21x バージョン 0.81 by ねこさん開発チーム, 1999-2001,2003-2005";
+CFBundleName = "ねこープロジェクト21x";
 
 "D88 フロッピーディスクイメージ" = "D88 フロッピーディスクイメージ";
 "ROMファイル" = "ROMファイル";

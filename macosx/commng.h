@@ -20,7 +20,12 @@ enum {
 	COMMSG_MIDIRESET		= 0,
 	COMMSG_SETFLAG,
 	COMMSG_GETFLAG,
-	COMMSG_USER
+#if defined(VAEG_FIX)
+	COMMSG_SETRSFLAG,
+#endif
+	COMMSG_CHANGESPEED,
+	COMMSG_CHANGEMODE,
+	COMMSG_USER			    = 0x80,
 };
 
 enum {
@@ -44,6 +49,8 @@ struct _commng {
 	UINT	connect;
 	UINT	(*read)(COMMNG self, BYTE *data);
 	UINT	(*write)(COMMNG self, BYTE data);
+	UINT	(*writeretry)(COMMNG self);							/*!< write retry */
+	UINT	(*lastwritesuccess)(COMMNG self);					/*!< last write success */
 	BYTE	(*getstat)(COMMNG self);
 	INTPTR	(*msg)(COMMNG self, UINT msg, INTPTR param);
 	void	(*release)(COMMNG self);

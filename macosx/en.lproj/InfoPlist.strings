@@ -1,8 +1,8 @@
 /* Localized versions of Info.plist keys */
 
 CFBundleShortVersionString = "Version 0.81";
-CFBundleGetInfoString = "Neko Project IIx version 0.81 by the Neko Project development team, 1999-2001, 2003-2005";
-CFBundleName = "Neko Project IIx";
+CFBundleGetInfoString = "Neko Project 21x version 0.81 by the Neko Project development team, 1999-2001, 2003-2005";
+CFBundleName = "Neko Project 21x";
 
 
 "D88 フロッピーディスクイメージ" = "D88 Floppy Disk Image";

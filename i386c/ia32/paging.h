@@ -365,8 +365,8 @@ laddr_to_paddr(UINT32 laddr, int ucrw)
  */
 struct tlb_entry;
 void tlb_init(void);
-void MEMCALL tlb_flush();
-void MEMCALL tlb_flush_all();
+void MEMCALL tlb_flush(void);
+void MEMCALL tlb_flush_all(void);
 void MEMCALL tlb_flush_page(UINT32 laddr);
 struct tlb_entry *MEMCALL tlb_lookup(UINT32 laddr, int ucrw);
 
