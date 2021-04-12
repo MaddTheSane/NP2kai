@@ -57,7 +57,7 @@ extern "C" {
 //includes
 
 #include <stdio.h>
-#include "IOHIDLib_.h"
+#include <HIDUtilities/IOHIDLib_.h>
 
 // ==================================
 
@@ -75,7 +75,7 @@ typedef void *IOHIDElementCookie;
 
 // Device and Element Interfaces
 
-enum HIDElementTypeMask {
+typedef CF_ENUM(UInt32, HIDElementTypeMask) {
 	kHIDElementTypeInput = 1 << 1,
 	kHIDElementTypeOutput = 1 << 2,
 	kHIDElementTypeFeature = 1 << 3,
@@ -83,7 +83,6 @@ enum HIDElementTypeMask {
 	kHIDElementTypeIO = kHIDElementTypeInput | kHIDElementTypeOutput | kHIDElementTypeFeature,
 	kHIDElementTypeAll = kHIDElementTypeIO | kHIDElementTypeCollection
 };
-typedef enum HIDElementTypeMask HIDElementTypeMask;
 
 // ==================================
 
@@ -147,7 +146,7 @@ extern unsigned char HIDHaveDeviceList(void);
 
 // how many HID devices have been found
 // returns 0 if no device list exist
-extern UInt32 HIDCountDevices(void);
+extern CFIndex HIDCountDevices(void);
 
 // how many elements does a specific device have
 // returns 0 if device is invalid or NULL

@@ -51,7 +51,7 @@
 
 #include <AvailabilityMacros.h>
 
-#include "IOHIDLib_.h"
+#include <HIDUtilities/IOHIDLib_.h>
 
 //*****************************************************
 #if PRAGMA_ONCE
@@ -123,7 +123,7 @@ extern "C" {
 	// Returns:	long - the vendor ID for this device
 	//
 	
-	extern long IOHIDDevice_GetVendorID(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetVendorID(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -136,7 +136,7 @@ extern "C" {
 	// Returns:	long - the VendorIDSource for this device
 	//
 	
-	extern long IOHIDDevice_GetVendorIDSource(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetVendorIDSource(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -149,7 +149,7 @@ extern "C" {
 	// Returns:	long - the product ID for this device
 	//
 	
-	extern long IOHIDDevice_GetProductID(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetProductID(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -162,7 +162,7 @@ extern "C" {
 	// Returns:	long - the VersionNumber for this device
 	//
 	
-	extern long IOHIDDevice_GetVersionNumber(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetVersionNumber(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -214,7 +214,7 @@ extern "C" {
 	// Returns:	long - the CountryCode for this device
 	//
 	
-	extern long IOHIDDevice_GetCountryCode(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetCountryCode(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -227,7 +227,7 @@ extern "C" {
 	// Returns:	long - the location ID for this device
 	//
 	
-	extern long IOHIDDevice_GetLocationID(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetLocationID(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -305,7 +305,7 @@ extern "C" {
 	// Returns:	long - the MaxInputReportSize for this device
 	//
 	
-	extern long IOHIDDevice_GetMaxInputReportSize(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetMaxInputReportSize(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -318,7 +318,7 @@ extern "C" {
 	// Returns:	long - the MaxOutputReportSize for this device
 	//
 	
-	extern long IOHIDDevice_GetMaxOutputReportSize(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetMaxOutputReportSize(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -331,7 +331,7 @@ extern "C" {
 	// Returns:	long - the MaxFeatureReportSize for this device
 	//
 	
-	extern long IOHIDDevice_GetMaxFeatureReportSize(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetMaxFeatureReportSize(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//
@@ -344,7 +344,7 @@ extern "C" {
 	// Returns:	long - the ReportInterval for this device
 	//
 	
-	extern long IOHIDDevice_GetReportInterval(IOHIDDeviceRef inIOHIDDeviceRef);
+	extern SInt32 IOHIDDevice_GetReportInterval(IOHIDDeviceRef inIOHIDDeviceRef);
 	
 	//*************************************************************************
 	//

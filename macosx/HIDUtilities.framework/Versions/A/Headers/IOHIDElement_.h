@@ -51,7 +51,7 @@
 
 #include <AvailabilityMacros.h>
 
-#include "IOHIDLib_.h"
+#include <HIDUtilities/IOHIDLib_.h>
 //*****************************************************
 #if PRAGMA_ONCE
 #pragma once

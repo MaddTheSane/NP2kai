@@ -51,10 +51,10 @@
 //-----------------------------------------------------
 #include <IOKit/hid/IOHIDLib.h>
 
-#include "IOHIDDevice_.h"
-#include "IOHIDElement_.h"
+#include <HIDUtilities/IOHIDDevice_.h>
+#include <HIDUtilities/IOHIDElement_.h>
 
-#include "ImmrHIDUtilAddOn.h"
+#include <HIDUtilities/ImmrHIDUtilAddOn.h>
 
 //*****************************************************
 #if PRAGMA_ONCE
