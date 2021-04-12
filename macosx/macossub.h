@@ -11,8 +11,8 @@ void macossub_term(void);
 
 UINT32 macos_gettick(void);
 
-void mkstr255(Str255 dst, const char *src);
-void mkcstr(char *dst, int size, const Str255 src);
+void mkstr255(Str255 dst, const char *src) DEPRECATED_ATTRIBUTE;
+void mkcstr(char *dst, int size, const Str255 src) DEPRECATED_ATTRIBUTE;
 
 #ifdef __cplusplus
 }

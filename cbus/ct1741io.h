@@ -143,14 +143,14 @@ typedef struct { // ステートセーブ互換性維持用（変更禁止）
 } DSP_INFO_OLD;
 
 
-void ct1741io_reset();
+void ct1741io_reset(void);
 void ct1741io_bind(void);
 void ct1741io_unbind(void);
 REG8 DMACCALL ct1741dmafunc(REG8 func);
 void ct1741_set_dma_irq(UINT8 irq);
 void ct1741_set_dma_ch(UINT8 dmach);
-UINT8 ct1741_get_dma_irq();
-UINT8 ct1741_get_dma_ch();
+UINT8 ct1741_get_dma_irq(void);
+UINT8 ct1741_get_dma_ch(void);
 void ct1741_initialize(UINT rate);
 
 void ct1741_dma(NEVENTITEM item);

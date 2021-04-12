@@ -81,8 +81,8 @@ static void inirdarg8(BYTE *dst, int dsize, const char *src) {
 	}
 }
 
-static BOOL inireadcb(void *arg, const char *para,
-										const char *key, const char *data) {
+static BRESULT inireadcb(void *arg, const char *para,
+						 const char *key, const char *data) {
 
 const INITBL	*p;
       char		work[512];
@@ -148,7 +148,7 @@ const INITBL	*p;
 }
 
 void ini_read(const char *path, const char *title,
-											const INITBL *tbl, UINT count) {
+			  const INITBL *tbl, UINT count) {
 
 	_INIARG	iniarg;
 
@@ -158,7 +158,7 @@ void ini_read(const char *path, const char *title,
 	iniarg.title = title;
 	iniarg.tbl = tbl;
 	iniarg.tblterm = tbl + count;
-	profile_enum(path, &iniarg, inireadcb);
+	profile_enum(path, (void*)&iniarg, inireadcb);
 }
 
 

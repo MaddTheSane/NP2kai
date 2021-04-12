@@ -343,6 +343,15 @@
 		558DA35C2624DB350019146B /* hdd_vhd.h in Headers */ = {isa = PBXBuildFile; fileRef = 558DA3572624DB350019146B /* hdd_vhd.h */; };
 		558DA37C2624E65F0019146B /* HIDUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556F2A6B1D2098D200335DF9 /* HIDUtilities.framework */; };
 		558DA37D2624E65F0019146B /* HIDUtilities.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 556F2A6B1D2098D200335DF9 /* HIDUtilities.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		558DA3AC262509E10019146B /* taskmng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C926B055778CC00000103 /* taskmng.cpp */; };
+		558DA3AD262509F30019146B /* timemng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C926D055778CC00000103 /* timemng.cpp */; };
+		558DA3AF26250A250019146B /* trace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C9272055778CC00000103 /* trace.cpp */; };
+		558DA3B026250A6A0019146B /* mackbd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C924B055778CB00000103 /* mackbd.cpp */; };
+		558DA3B126250A780019146B /* joymng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C9246055778CB00000103 /* joymng.cpp */; };
+		558DA3B226250A800019146B /* ini.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C9244055778CB00000103 /* ini.cpp */; };
+		558DA3B426250B0A0019146B /* cmmidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 968D8BC305F5229D00CFB890 /* cmmidi.cpp */; };
+		558DA3B526250B9F0019146B /* sysmng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C9269055778CC00000103 /* sysmng.cpp */; };
+		558DA3B726250CE40019146B /* macossub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C924D055778CB00000103 /* macossub.cpp */; };
 		5595B64E1D20F67400DDA319 /* dmav30.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6461D20F67400DDA319 /* dmav30.h */; };
 		5595B64F1D20F67400DDA319 /* dmax86.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6471D20F67400DDA319 /* dmax86.h */; };
 		5595B6501D20F67400DDA319 /* memegc.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6481D20F67400DDA319 /* memegc.h */; };
@@ -527,7 +536,6 @@
 		556F2B6D1D20A73900335DF9 /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
 		556F2B6E1D20A73900335DF9 /* mousemng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mousemng.h; sourceTree = "<group>"; };
 		556F2B6F1D20A73900335DF9 /* np2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = np2.h; sourceTree = "<group>"; };
-		556F2B701D20A73900335DF9 /* np2opening.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = np2opening.h; sourceTree = "<group>"; };
 		556F2B711D20A73900335DF9 /* resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resource.h; sourceTree = "<group>"; };
 		556F2B721D20A73900335DF9 /* scrnmng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scrnmng.h; sourceTree = "<group>"; };
 		556F2B731D20A73900335DF9 /* soundmng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundmng.h; sourceTree = "<group>"; };
@@ -724,7 +732,6 @@
 		967C924F055778CB00000103 /* menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		967C9251055778CB00000103 /* mousemng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mousemng.cpp; sourceTree = "<group>"; };
 		967C9254055778CB00000103 /* np2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = np2.cpp; sourceTree = "<group>"; };
-		967C925F055778CC00000103 /* np2opening.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = np2opening.cpp; sourceTree = "<group>"; };
 		967C9263055778CC00000103 /* scrnmng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scrnmng.cpp; sourceTree = "<group>"; };
 		967C9265055778CC00000103 /* soundmng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundmng.cpp; sourceTree = "<group>"; };
 		967C9267055778CC00000103 /* soundrecording.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundrecording.cpp; sourceTree = "<group>"; };
@@ -825,7 +832,7 @@
 		96F97192083CFCF60036D494 /* memvram.c */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.c; path = memvram.c; sourceTree = "<group>"; };
 		96F971C1083CFEDE0036D494 /* sxsicd.c */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.c.c; path = sxsicd.c; sourceTree = "<group>"; };
 		96F971C2083CFEDE0036D494 /* sxsihdd.c */ = {isa = PBXFileReference; fileEncoding = 8; lastKnownFileType = sourcecode.c.c; path = sxsihdd.c; sourceTree = "<group>"; };
-		F50908FE053EDAC2014E43C7 /* en */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.rez; name = en; path = en.lproj/np2.r; sourceTree = SOURCE_ROOT; };
+		F50908FE053EDAC2014E43C7 /* en */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = en; path = en.lproj/np2.r; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1212,8 +1219,6 @@
 				967C9254055778CB00000103 /* np2.cpp */,
 				556F2B6F1D20A73900335DF9 /* np2.h */,
 				556F2B4A1D20A1C400335DF9 /* np2gcc_ia32.h */,
-				967C925F055778CC00000103 /* np2opening.cpp */,
-				556F2B701D20A73900335DF9 /* np2opening.h */,
 				556F2B711D20A73900335DF9 /* resource.h */,
 				967C9263055778CC00000103 /* scrnmng.cpp */,
 				556F2B721D20A73900335DF9 /* scrnmng.h */,
@@ -1734,9 +1739,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558DA3B226250A800019146B /* ini.cpp in Sources */,
 				55842DE51D2084C60017B417 /* _memory.c in Sources */,
 				55842DE61D2084C60017B417 /* bmpdata.c in Sources */,
 				55842DE71D2084C60017B417 /* lstarray.c in Sources */,
+				558DA3B426250B0A0019146B /* cmmidi.cpp in Sources */,
 				55842DE81D2084C60017B417 /* milstr.c in Sources */,
 				55842DE91D2084C60017B417 /* mimpidef.c in Sources */,
 				55842DEA1D2084C60017B417 /* parts.c in Sources */,
@@ -1838,6 +1845,7 @@
 				55842E661D2084C60017B417 /* midvoice.c in Sources */,
 				55842E671D2084C60017B417 /* dispsync.c in Sources */,
 				55842E681D2084C60017B417 /* makegrph.c in Sources */,
+				558DA3B726250CE40019146B /* macossub.cpp in Sources */,
 				55842E691D2084C60017B417 /* maketext.c in Sources */,
 				55842E6A1D2084C60017B417 /* maketgrp.c in Sources */,
 				55842E6B1D2084C60017B417 /* palettes.c in Sources */,
@@ -1863,11 +1871,14 @@
 				55842E801D2084C60017B417 /* sxsibios.c in Sources */,
 				55842E811D2084C60017B417 /* sasiio.c in Sources */,
 				55842E821D2084C60017B417 /* scsicmd.c in Sources */,
+				558DA3B526250B9F0019146B /* sysmng.cpp in Sources */,
 				55842E831D2084C60017B417 /* scsiio.c in Sources */,
 				558DA34E2622F7A10019146B /* commng.cpp in Sources */,
 				55842E841D2084C60017B417 /* getmp3.c in Sources */,
 				55842E851D2084C60017B417 /* getogg.c in Sources */,
+				558DA3AD262509F30019146B /* timemng.cpp in Sources */,
 				55842E861D2084C60017B417 /* getsmix.c in Sources */,
+				558DA3AF26250A250019146B /* trace.cpp in Sources */,
 				55842E871D2084C60017B417 /* getsnd.c in Sources */,
 				55842E881D2084C60017B417 /* getwave.c in Sources */,
 				55842E891D2084C60017B417 /* emsio.c in Sources */,
@@ -1881,6 +1892,7 @@
 				55842E911D2084C60017B417 /* exception.c in Sources */,
 				55842E921D2084C60017B417 /* groups.c in Sources */,
 				55842E931D2084C60017B417 /* ia32.c in Sources */,
+				558DA3B026250A6A0019146B /* mackbd.cpp in Sources */,
 				55842E941D2084C60017B417 /* inst_table.c in Sources */,
 				55842E951D2084C60017B417 /* bin_arith.c in Sources */,
 				55842E961D2084C60017B417 /* bit_byte.c in Sources */,
@@ -1907,6 +1919,7 @@
 				55842EAD1D2084C60017B417 /* bios1f.c in Sources */,
 				55842EAE1D2084C60017B417 /* pcidev.c in Sources */,
 				55842EAF1D2084C60017B417 /* softkbd.c in Sources */,
+				558DA3AC262509E10019146B /* taskmng.cpp in Sources */,
 				55842EB11D2084C60017B417 /* gcircle.c in Sources */,
 				55842EB31D2084C60017B417 /* dmav30.c in Sources */,
 				55842EB41D2084C60017B417 /* dmax86.c in Sources */,
@@ -1919,6 +1932,7 @@
 				55842EBB1D2084C60017B417 /* sxsicd.c in Sources */,
 				55842EBC1D2084C60017B417 /* sxsihdd.c in Sources */,
 				555F6994208BDCC10002E7FF /* eucsjis.c in Sources */,
+				558DA3B126250A780019146B /* joymng.cpp in Sources */,
 				555F6995208BDCC10002E7FF /* eucucs2.c in Sources */,
 				555F6996208BDCC10002E7FF /* sjiseuc.c in Sources */,
 				555F6997208BDCC10002E7FF /* sjisucs2.c in Sources */,
@@ -2009,7 +2023,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -2049,7 +2063,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -2063,7 +2077,6 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = np2gcc_ia32.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2072,8 +2085,9 @@
 					SUPPORT_PC9821,
 					SUPPORT_PEGC,
 					SUPPORT_KAI_IMAGES,
+					SUPPORT_IDEIO,
+					SUPPORT_IDEIO_48BIT,
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../mem\"",
 					"\"$(SRCROOT)/../i386c/ia32/\"",
@@ -2091,7 +2105,7 @@
 					"\"$(SRCROOT)/../common\"",
 				);
 				"HEADER_SEARCH_PATHS[arch=arm64]" = (
-					"\"$(SRCROOT)/../i286c\"",
+					"\"$(SRCROOT)/../i386c\"",
 					"$(inherited)",
 				);
 				"HEADER_SEARCH_PATHS[arch=x86_64]" = (
@@ -2108,11 +2122,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.retropc.Neko-Project-21x";
 				PRODUCT_NAME = "Neko Project 21x";
 				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2126,8 +2135,6 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_DYNAMIC_NO_PIC = YES;
-				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = np2gcc_ia32.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2136,8 +2143,9 @@
 					SUPPORT_PC9821,
 					SUPPORT_PEGC,
 					SUPPORT_KAI_IMAGES,
+					SUPPORT_IDEIO,
+					SUPPORT_IDEIO_48BIT,
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../mem\"",
 					"\"$(SRCROOT)/../i386c/ia32/\"",
@@ -2155,7 +2163,7 @@
 					"\"$(SRCROOT)/../common\"",
 				);
 				"HEADER_SEARCH_PATHS[arch=arm64]" = (
-					"\"$(SRCROOT)/../i286c\"",
+					"\"$(SRCROOT)/../i386c\"",
 					"$(inherited)",
 				);
 				"HEADER_SEARCH_PATHS[arch=x86_64]" = (
@@ -2172,11 +2180,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.retropc.Neko-Project-21x";
 				PRODUCT_NAME = "Neko Project 21x";
 				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

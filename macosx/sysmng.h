@@ -15,6 +15,13 @@ enum {
 	SYS_UPDATESERIAL1	= 0x0400
 };
 
+enum {
+	SYS_UPDATECAPTION_FDD	= 0x01,
+	SYS_UPDATECAPTION_CLK	= 0x02,
+	SYS_UPDATECAPTION_MISC	= 0x04,
+	
+	SYS_UPDATECAPTION_ALL	= 0xff,
+};
 
 #ifdef __cplusplus
 extern "C" {

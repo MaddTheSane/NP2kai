@@ -4,7 +4,7 @@
 #include	"sysmng.h"
 #include	"cpucore.h"
 #include	"pccore.h"
-#include	"fddfile.h"
+#include	<diskimage/fddfile.h>
 #include	"diskdrv.h"
 
 	UINT	sys_updates;
@@ -110,7 +110,7 @@ void sysmng_updatecaption(BYTE flag) {
 #if defined(NP2GCC)
 	CFStringRef cfstr;
 	cfstr = CFStringCreateWithCString(NULL, work, CFStringGetSystemEncoding());
-    SetWindowTitleWithCFString(hWndMain, cfstr);
+//    SetWindowTitleWithCFString(hWndMain, cfstr);
 	CFRelease(cfstr);
 #else
 	mkstr255(str, work);

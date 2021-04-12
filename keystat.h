@@ -213,7 +213,7 @@ REG8 keystat_getmouse(SINT16 *x, SINT16 *y);
 
 // keyrepeat
 // keyrepeat interval processing
-void keyrepeat_proc();
+void keyrepeat_proc(void);
 
 // ---- 廃止関数
 

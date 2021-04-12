@@ -39,11 +39,11 @@ resource 'MENU' (IDM_EMULATE) {
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [3] */
-		"Configure...", noIcon, ";", noMark, plain,
+		"Configure…", noIcon, ";", noMark, plain,
 		/* [4] */
-		"New Disk...", noIcon, "N", noMark, plain,
+		"New Disk…", noIcon, "N", noMark, plain,
 		/* [5] */
-		"Font...", noIcon, noKey, noMark, plain
+		"Font…", noIcon, noKey, noMark, plain
 	}
 };
 
@@ -59,11 +59,11 @@ resource 'MENU' (130) {
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [3] */
-		"Configure...", noIcon, ";", noMark, plain,
+		"Configure…", noIcon, ";", noMark, plain,
 		/* [4] */
-		"New Disk...", noIcon, "N", noMark, plain,
+		"New Disk…", noIcon, "N", noMark, plain,
 		/* [5] */
-		"Font...", noIcon, noKey, noMark, plain,
+		"Font…", noIcon, noKey, noMark, plain,
 		/* [6] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [7] */
@@ -89,17 +89,17 @@ resource 'MENU' (IDM_DEVICE) {
 		/* [5] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [6] */
-		"Serial options...", noIcon, noKey, noMark, plain,
+		"Serial options…", noIcon, noKey, noMark, plain,
 		/* [7] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [8] */
-		"MIDI options...", noIcon, noKey, noMark, plain,
+		"MIDI options…", noIcon, noKey, noMark, plain,
 		/* [9] */
 		"MIDI Panic", noIcon, noKey, noMark, plain,
 		/* [10] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [11] */
-		"Sound options...", noIcon, noKey, noMark, plain
+		"Sound options…", noIcon, noKey, noMark, plain
 	}
 };
 
@@ -141,7 +141,7 @@ resource 'MENU' (IDM_SCREEN) {
 		/* [15] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [16] */
-		"Screen options...", noIcon, noKey, noMark, plain
+		"Screen options…", noIcon, noKey, noMark, plain
 	}
 };
 
@@ -243,7 +243,7 @@ resource 'MENU' (IDM_SCSI2) {
 	"SCSI2",
 	{	/* array: 3 elements */
 		/* [1] */
-		"Open...", noIcon, noKey, noMark, plain,
+		"Open…", noIcon, noKey, noMark, plain,
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [3] */
@@ -275,7 +275,7 @@ resource 'MENU' (IDM_SASI1) {
 	"SASI1",
 	{	/* array: 3 elements */
 		/* [1] */
-		"Open...", noIcon, "O", noMark, plain,
+		"Open…", noIcon, "O", noMark, plain,
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [3] */
@@ -291,7 +291,7 @@ resource 'MENU' (IDM_SASI2) {
 	"SASI2",
 	{	/* array: 3 elements */
 		/* [1] */
-		"Open...", noIcon, "O", noMark, plain,
+		"Open…", noIcon, "O", noMark, plain,
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [3] */
@@ -307,7 +307,7 @@ resource 'MENU' (IDM_FDD1) {
 	"FDD1",
 	{	/* array: 3 elements */
 		/* [1] */
-		"Open...", noIcon, "D", noMark, plain,
+		"Open…", noIcon, "D", noMark, plain,
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [3] */
@@ -323,7 +323,7 @@ resource 'MENU' (IDM_FDD2) {
 	"FDD2",
 	{	/* array: 3 elements */
 		/* [1] */
-		"Open...", noIcon, "D", noMark, plain,
+		"Open…", noIcon, "D", noMark, plain,
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [3] */
@@ -433,7 +433,7 @@ resource 'MENU' (IDM_APPLE) {
 	apple,
 	{	/* array: 2 elements */
 		/* [1] */
-		"About Neko Project IIx...", noIcon, noKey, noMark, plain,
+		"About Neko Project IIx…", noIcon, noKey, noMark, plain,
 		/* [2] */
 		"-", noIcon, noKey, noMark, plain
 	}
@@ -447,11 +447,11 @@ resource 'MENU' (IDM_OTHER) {
 	"Other",
 	{	/* array: 12 elements */
 		/* [1] */
-		"Save BMP...", noIcon, noKey, noMark, plain,
+		"Save BMP…", noIcon, noKey, noMark, plain,
 		/* [2] */
-		"S98 logging...", noIcon, noKey, noMark, plain,
+		"S98 logging…", noIcon, noKey, noMark, plain,
 		/* [3] */
-		"Calendar...", noIcon, noKey, noMark, plain,
+		"Calendar…", noIcon, noKey, noMark, plain,
 		/* [4] */
 		"Clock Display", noIcon, noKey, noMark, plain,
 		/* [5] */
@@ -465,7 +465,7 @@ resource 'MENU' (IDM_OTHER) {
 		/* [9] */
 		"-", noIcon, noKey, noMark, plain,
 		/* [10] */
-		"Sound Recording...", noIcon, "S", noMark, plain,
+		"Sound Recording…", noIcon, "S", noMark, plain,
 		/* [11] */
 		"Key Display", noIcon, noKey, noMark, plain,
 		/* [12] */

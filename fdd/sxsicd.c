@@ -72,7 +72,7 @@ BRESULT sxsicd_readraw(SXSIDEV sxsi, FILEPOS pos, void *buf) {
 	CDINFO	cdinfo;
 	FILEH	fh;
 	FILEPOS	fpos;
-	UINT16	secsize;
+	UINT16	secsize=0;
 	UINT	i;
 	UINT32	secs;
 //	UINT64	trk_offset;

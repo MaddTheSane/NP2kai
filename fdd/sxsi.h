@@ -83,7 +83,7 @@ extern "C" {
 extern _SXSIDEV	sxsi_dev[SASIHDD_MAX + SCSIHDD_MAX];
 
 #if !defined(_WIN32)
-unsigned GetTickCount();
+unsigned GetTickCount(void);
 #endif
 
 void sxsi_initialize(void);

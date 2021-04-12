@@ -9,13 +9,15 @@
 
 #else
 
+#include <stdio.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 void trace_init(void);
 void trace_term(void);
-void trace_fmt(const char *str, ...);
+void trace_fmt(const char *str, ...) __printflike(1, 2);
 
 #ifdef __cplusplus
 }

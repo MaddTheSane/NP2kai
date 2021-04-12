@@ -19,7 +19,7 @@ static const SINT32 pcm86rescue[] = {PCM86_RESCUE * 32, PCM86_RESCUE * 24,
 static const UINT8 s_irqtable[8] = {0xff, 0xff, 0xff, 0xff, 0x03, 0x0a, 0x0d, 0x0c};
 
 // for Q-Vision Wave Star (XXX: この辺のポートを操作中にResumeやStateSaveを使うとやばい)
-static void pcm86_updateWaveStarPorts();
+static void pcm86_updateWaveStarPorts(void);
 REG8 wavestar_a462_seq[] = {0xa6, 0xd3, 0x69, 0xb4, 0x5a};
 REG8 wavestar_a462_seq_index = 0;
 REG8 wavestar_a464_value = 0xff;
