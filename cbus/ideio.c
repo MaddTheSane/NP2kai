@@ -343,7 +343,7 @@ static void drvreset(IDEDRV drv) {
 	}
 }
 
-static void panic(const char *str, ...) {
+static void np2_panic(const char *str, ...) {
 
 	char	buf[2048];
 	va_list	ap;
@@ -1161,7 +1161,7 @@ static void IOOUTCALL ideio_o64e(UINT port, REG8 dat) {
 #endif
 			
 		default:
-			panic("ideio: unknown command %.2x", dat);
+			np2_panic("ideio: unknown command %.2x", dat);
 			break;
 	}
 	(void)port;

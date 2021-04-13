@@ -5,17 +5,15 @@ enum {
 	FTYPE_INI		= -1		// Tool Window iniファイル
 };
 
-#define	FILEH			FSIORefNum
-#define	FILEH_INVALID	((FILEH)-1)
+typedef FILE *				FILEH;
+#define	FILEH_INVALID		NULL
 
-#define	FLISTH				void *
-#define	FLISTH_INVALID		((FLISTH)0)
+#define	FLISTH				long
+#define	FLISTH_INVALID		0
 
-enum {
-	FSEEK_SET	= 0,
-	FSEEK_CUR	= 1,
-	FSEEK_END	= 2
-};
+#define	FSEEK_SET	SEEK_SET
+#define	FSEEK_CUR	SEEK_CUR
+#define	FSEEK_END	SEEK_END
 
 enum {
 	FILEATTR_READONLY	= 0x01,

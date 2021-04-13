@@ -1,8 +1,9 @@
+#pragma once
 
 enum {
-	SOUND_PCMSEEK		= 0,
-	SOUND_PCMSEEK1		= 1,
-
+	SOUND_PCMSEEK,
+	SOUND_PCMSEEK1,
+	SOUND_RELAY1,
 	SOUND_MAXPCM
 };
 

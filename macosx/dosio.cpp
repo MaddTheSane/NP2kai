@@ -1,9 +1,18 @@
-#include	"compiler.h"
-#include	"dosio.h"
+#include <compiler.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <time.h>
+#include <dosio.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <unistd.h>
 
-
-static	char	curpath[MAX_PATH] = ":";
-static	char	*curfilep = curpath + 1;
+#if defined(_WINDOWS)
+static	OEMCHAR	curpath[MAX_PATH] = OEMTEXT(".\\");
+#else
+static	OEMCHAR	curpath[MAX_PATH] = OEMTEXT("./");
+#endif
+static	OEMCHAR	*curfilep = curpath + 2;
 
 #define ISKANJI(c)	(((((c) ^ 0x20) - 0xa1) & 0xff) < 0x3c)
 
@@ -12,230 +21,110 @@ void dosio_term(void) { }
 
 											// ファイル操作
 FILEH file_open(const char *path) {
+	FILEH hRes = NULL;
 
-	FILEH	ret;
-	FSSpec	fss;
-	Str255	fname;
+	hRes = fopen(path, "rb+");
 
-	mkstr255(fname, path);
-	FSMakeFSSpec(0, 0, fname, &fss);
-	if ((FSpOpenDF(&fss, fsRdWrPerm, &ret) == noErr) ||
-		(FSpOpenDF(&fss, fsRdPerm, &ret) == noErr)) {
-		SetFPos(ret, fsFromStart, 0);
-		return(ret);
-	}
-	return(-1);
+	return hRes;
 }
 
 FILEH file_open_rb(const char *path) {
+	FILEH hRes = NULL;
 
-	FILEH	ret;
-	FSSpec	fss;
-	Str255	fname;
+	hRes = fopen(path, "rb");
 
-	mkstr255(fname, path);
-	FSMakeFSSpec(0, 0, fname, &fss);
-	if ((FSpOpenDF(&fss, fsRdWrShPerm, &ret) == noErr) ||
-		(FSpOpenDF(&fss, fsRdPerm, &ret) == noErr)) {
-		SetFPos(ret, fsFromStart, 0);
-		return(ret);
-	}
-	return(-1);
+	return hRes;
 }
 
 FILEH file_create(const char *path) {
+    FILEH hRes = NULL;
 
-	FILEH	ret;
-	FSSpec	fss;
-	Str255	fname;
-	OSType	creator = kUnknownType;
-	OSType	fileType = kUnknownType;
+    hRes = fopen(path, "wb+");
 
-	mkstr255(fname, path);
-	FSMakeFSSpec(0, 0, fname, &fss);
-	FSpDelete(&fss);
-
-	if (FSpCreate(&fss, creator, fileType, smSystemScript) == noErr) {
-		if ((FSpOpenDF(&fss, fsRdPerm | fsWrPerm, &ret) == noErr) ||
-			(FSpOpenDF(&fss, fsRdPerm, &ret) == noErr)) {
-			SetFPos(ret, fsFromStart, 0);
-			return(ret);
-		}
-	}
-	return(-1);
+    return hRes;
 }
 
 long file_seek(FILEH handle, long pointer, int method) {
-
-	SInt32	pos;
-	SInt32	setp;
-
-	setp = pointer;
-	switch(method) {
-		case FSEEK_SET:
-			break;
-		case FSEEK_CUR:
-			if (GetFPos(handle, &pos) != noErr) {
-				return(-1);
-			}
-			setp += pos;
-			break;
-		case FSEEK_END:
-			if (GetEOF(handle, &pos) != noErr) {
-				return(-1);
-			}
-			setp += pos;
-			break;
-		default:
-			return(-1);
-	}
-	SetFPos(handle, fsFromStart, setp);
-	if (GetFPos(handle, &pos) != noErr) {
-		return(-1);
-	}
-	return((long)pos);
+	fseek(handle, pointer, method);
+	return(ftell(handle));
 }
 
 UINT file_read(FILEH handle, void *data, UINT length) {
-
-	long	size;
-	OSErr	err;
-
-	size = length;
-	err = FSRead(handle, &size, (char *)data);
-	if ((err == noErr) || (err == eofErr)) {
-		return(size);
-	}
-	return(0);
+	return((UINT)fread(data, 1, length, handle));
 }
 
 UINT file_write(FILEH handle, const void *data, UINT length) {
-
-	if (length) {
-		long size = length;
-		if (FSWrite(handle, &size, (char *)data) == noErr) {
-			return(size);
-		}
-	}
-	else {
-		SInt32 pos;
-		if (GetFPos(handle, &pos) == noErr) {
-			SetEOF(handle, pos);
-		}
-	}
-	return(0);
+	return((UINT)fwrite(data, 1, length, handle));
 }
 
 short file_close(FILEH handle) {
-
-	FSClose(handle);
+	fclose(handle);
 	return(0);
 }
 
 UINT file_getsize(FILEH handle) {
+	struct stat sb;
 
-	SInt32 pos;
-
-	if (GetEOF(handle, &pos) == noErr) {
-		return((UINT)pos);
+	if (fstat(fileno(handle), &sb) == 0)
+	{
+		return (FILELEN)sb.st_size;
 	}
-	else {
-		return(0);
-	}
+	return(0);
 }
 
-static void cnvdatetime(UTCDateTime *dt, DOSDATE *dosdate, DOSTIME *dostime) {
+static BRESULT cnv_sttime(time_t *t, DOSDATE *dosdate, DOSTIME *dostime) {
+	struct tm	*ftime;
 
-	LocalDateTime	ldt;
-	DateTimeRec		dtr;
-
-	ZeroMemory(&dtr, sizeof(dtr));
-	ConvertUTCToLocalDateTime(dt, &ldt);
-	SecondsToDate(ldt.lowSeconds, &dtr);
+	ftime = localtime(t);
+	if (ftime == NULL) {
+		return(FAILURE);
+	}
 	if (dosdate) {
-		dosdate->year = dtr.year;
-		dosdate->month = (UINT8)dtr.month;
-		dosdate->day = (UINT8)dtr.day;
+		dosdate->year = ftime->tm_year + 1900;
+		dosdate->month = ftime->tm_mon + 1;
+		dosdate->day = ftime->tm_mday;
 	}
 	if (dostime) {
-		dostime->hour = (UINT8)dtr.hour;
-		dostime->minute = (UINT8)dtr.minute;
-		dostime->second = (UINT8)dtr.second;
+		dostime->hour = ftime->tm_hour;
+		dostime->minute = ftime->tm_min;
+		dostime->second = ftime->tm_sec;
 	}
+	return(SUCCESS);
 }
 
 short file_getdatetime(FILEH handle, DOSDATE *dosdate, DOSTIME *dostime) {
+	struct stat sb;
 
-#ifdef TARGET_API_MAC_CARBON
-
-	FSRef			ref;
-	FSCatalogInfo	fsci;
-
-	if ((FSGetForkCBInfo(handle, 0, NULL, NULL, NULL, &ref, NULL) != noErr) ||
-		(FSGetCatalogInfo(&ref, kFSCatInfoContentMod, &fsci, NULL, NULL, NULL)
-																!= noErr)) {
-		return(-1);
+	if (fstat(fileno(handle), &sb) == 0) {
+		if (cnv_sttime(&sb.st_mtime, dosdate, dostime) == SUCCESS) {
+			return(0);
+		}
 	}
-	cnvdatetime(&fsci.contentModDate, dosdate, dostime);
-	return(0);
-#else
-	(void)handle;
-	(void)dosdate;
-	(void)dostime;
 	return(-1);
-#endif
 }
 
 short file_delete(const char *path) {
-
-	FSSpec	fss;
-	Str255	fname;
-
-	mkstr255(fname, path);
-	FSMakeFSSpec(0, 0, fname, &fss);
-	FSpDelete(&fss);
-	return(0);
+	return(remove(path));
 }
 
 short file_attr(const char *path) {
+	short	attr = 0;
+	
+	struct stat sb;
+	if(stat(path, &sb) == 0) {
+		if(S_ISDIR(sb.st_mode)) {
+			attr |= FILEATTR_DIRECTORY;
+		}
+		if(!(sb.st_mode & S_IWUSR)) {
+			attr |= FILEATTR_READONLY;
+		}
+	}
 
-	Str255			fname;
-	FSSpec			fss;
-	FSRef			fsr;
-	FSCatalogInfo	fsci;
-	short			ret;
-
-	mkstr255(fname, path);
-	if ((FSMakeFSSpec(0, 0, fname, &fss) != noErr) ||
-		(FSpMakeFSRef(&fss, &fsr) != noErr) ||
-		(FSGetCatalogInfo(&fsr, kFSCatInfoNodeFlags, &fsci,
-										NULL, NULL, NULL) != noErr)) {
-		return(-1);
-	}
-	if (fsci.nodeFlags & kFSNodeIsDirectoryMask) {
-		ret = FILEATTR_DIRECTORY;
-	}
-	else {
-		ret = FILEATTR_ARCHIVE;
-	}
-	if (fsci.nodeFlags & kFSNodeLockedMask) {
-		ret |= FILEATTR_READONLY;
-	}
-	return(ret);
+	return(attr);
 }
 
 short file_dircreate(const char *path) {
-
-	FSSpec	fss;
-	Str255	fname;
-	long	ret;
-
-	mkstr255(fname, path);
-	FSMakeFSSpec(0, 0, fname, &fss);
-	if (FSpDirCreate(&fss, smSystemScript, &ret) == noErr) {
-		return(0);
-	}
-	return(-1);
+	return((short)mkdir(path, 0777));
 }
 
 											// カレントファイル操作
@@ -304,105 +193,66 @@ static void char2str(char *dst, int size, const UniChar *uni, int unicnt) {
 	CFRelease(cfsr);
 }
 
-void *file_list1st(const char *dir, FLINFO *fli) {
+FLISTH file_list1st(const char *dir, FLINFO *fli) {
+	DIR		*ret;
 
-	FLISTH		ret;
-	Str255		fname;
-	FSSpec		fss;
-	FSRef		fsr;
-	FSIterator	fsi;
-
-	mkstr255(fname, dir);
-	if ((FSMakeFSSpec(0, 0, fname, &fss) != noErr) ||
-		(FSpMakeFSRef(&fss, &fsr) != noErr) ||
-		(FSOpenIterator(&fsr, kFSIterateFlat, &fsi) != noErr)) {
-		goto ff1_err1;
-	}
-	ret = _MALLOC(sizeof(_FLHDL), dir);
+	ret = opendir(dir);
 	if (ret == NULL) {
-		goto ff1_err2;
+		goto ff1_err;
 	}
-	((FLHDL)ret)->eoff = FALSE;
-	((FLHDL)ret)->fsi = fsi;
-	if (file_listnext(ret, fli) == SUCCESS) {
-		return(ret);
+	if (file_listnext((FLISTH)ret, fli) == SUCCESS) {
+		return((FLISTH)ret);
 	}
+	closedir(ret);
 
-ff1_err2:
-	FSCloseIterator(fsi);
-
-ff1_err1:
-	return(NULL);
+ff1_err:
+	return(FLISTH_INVALID);
 }
 
 BOOL file_listnext(FLISTH hdl, FLINFO *fli) {
+	struct dirent	*de;
+	struct stat		sb;
 
-	FLHDL		flhdl;
-	ItemCount	count;
-	OSStatus	r;
-	UTCDateTime	*dt;
-
-	flhdl = (FLHDL)hdl;
-	if ((flhdl == NULL) || (flhdl->eoff)) {
-		goto ffn_err;
-	}
-	r = FSGetCatalogInfoBulk(flhdl->fsi, 1, &count, NULL,
-						kFSCatInfoNodeFlags | kFSCatInfoDataSizes |
-						kFSCatInfoAllDates,
-						&flhdl->fsci, NULL, NULL, &flhdl->name);
-	if (r != noErr) {
-		flhdl->eoff = TRUE;
-		if (r != errFSNoMoreItems) {
-			goto ffn_err;
-		}
-	}
-	if (count != 1) {
-		flhdl->eoff = TRUE;
-		goto ffn_err;
+	de = readdir((DIR *)hdl);
+	if (de == NULL) {
+		return(FAILURE);
 	}
 	if (fli) {
-		fli->caps = FLICAPS_SIZE | FLICAPS_ATTR | FLICAPS_DATE | FLICAPS_TIME;
-		if (flhdl->fsci.nodeFlags & kFSNodeIsDirectoryMask) {
-			fli->attr = FILEATTR_DIRECTORY;
-			fli->size = 0;
-			dt = &flhdl->fsci.createDate;
+		memset(fli, 0, sizeof(*fli));
+		fli->caps = FLICAPS_ATTR;
+		fli->attr = (de->d_type & DT_DIR) ? FILEATTR_DIRECTORY : 0;
+
+		if (stat(de->d_name, &sb) == 0) {
+			fli->caps |= FLICAPS_SIZE;
+			fli->size = (UINT)sb.st_size;
+			if (S_ISDIR(sb.st_mode)) {
+				fli->attr |= FILEATTR_DIRECTORY;
+			}
+			if (!(sb.st_mode & S_IWUSR)) {
+				fli->attr |= FILEATTR_READONLY;
+			}
+			if (cnv_sttime(&sb.st_mtime, &fli->date, &fli->time) == SUCCESS) {
+				fli->caps |= FLICAPS_DATE | FLICAPS_TIME;
+			}
 		}
-		else {
-			fli->attr = FILEATTR_ARCHIVE;
-			fli->size = (UINT32)flhdl->fsci.dataLogicalSize;
-			dt = &flhdl->fsci.contentModDate;
-		}
-		cnvdatetime(dt, &fli->date, &fli->time);
-		char2str(fli->path, sizeof(fli->path),
-								flhdl->name.unicode, flhdl->name.length);
+		milstr_ncpy(fli->path, de->d_name, sizeof(fli->path));
 	}
 	return(SUCCESS);
-
-ffn_err:
-	return(FAILURE);
 }
 
 void file_listclose(FLISTH hdl) {
-
-	if (hdl) {
-		FSCloseIterator(((FLHDL)hdl)->fsi);
-		_MFREE(hdl);
-	}
+	closedir((DIR *)hdl);
 }
 
 BOOL getLongFileName(char *dst, const char *path) {
 
-	FSSpec			fss;
-	Str255			fname;
 	FSRef			fref;
 	HFSUniStr255	name;
 
 	if (*path == '\0') {
 		return(false);
 	}
-	mkstr255(fname, path);
-	FSMakeFSSpec(0, 0, fname, &fss);
-	FSpMakeFSRef(&fss, &fref);
+	FSPathMakeRef((const UInt8*)path, &fref, NULL);
 	if (FSGetCatalogInfo(&fref, kFSCatInfoNone, NULL, &name, NULL, NULL)
 																!= noErr) {
 		return(false);
@@ -415,40 +265,37 @@ BOOL getLongFileName(char *dst, const char *path) {
 }
 
 
-void file_catname(char *path, const char *sjis, int maxlen) {
-
-	char	*p;
-
-	p = path + strlen(path);
-	milstr_ncat(path, sjis, maxlen);
-	while(1) {
-		if (ISKANJI(*p)) {
-			if (*(p+1) == '\0') {
-				break;
-			}
-			p++;
-		}
-		else if ((*p == '/') || (*p == '\\')) {
-			*p = ':';
-		}
-		else if (*p == '\0') {
+void file_catname(char *path, const char *name, int maxlen) {
+	int		csize;
+	
+	while(maxlen > 0) {
+		if (*path == '\0') {
 			break;
 		}
-		p++;
+		path++;
+		maxlen--;
+	}
+	file_cpyname(path, name, maxlen);
+	while((csize = milstr_charsize(path)) != 0) {
+		if ((csize == 1) && (*path == '/')) {
+			*path = '/';
+		}
+		path += csize;
 	}
 }
 
 char *file_getname(const char *path) {
-
-	const char 	*ret;
-
+	const OEMCHAR	*ret;
+	int		csize;
+	
 	ret = path;
-	while(*path != '\0') {
-		if (*path++ == ':') {
-			ret = path;
+	while((csize = milstr_charsize(path)) != 0) {
+		if ((csize == 1) && (*path == '/')) {
+			ret = path + 1;
 		}
+		path += csize;
 	}
-	return((char *)ret);
+	return((OEMCHAR *)ret);
 }
 
 void file_cutname(char *path) {
@@ -499,7 +346,7 @@ void file_cutext(char *path) {
 
 void file_cutseparator(char *path) {
 
-	int		pos;
+	ssize_t		pos;
 
 	pos = strlen(path) - 1;
 	if ((pos > 0) && (path[pos] == ':')) {
@@ -509,7 +356,7 @@ void file_cutseparator(char *path) {
 
 void file_setseparator(char *path, int maxlen) {
 
-	int		pos;
+	ssize_t		pos;
 
 	pos = strlen(path) - 1;
 	if ((pos < 0) || (path[pos] == ':') || ((pos + 2) >= maxlen)) {
@@ -519,3 +366,10 @@ void file_setseparator(char *path, int maxlen) {
 	path[++pos] = '\0';
 }
 
+short file_rename(const OEMCHAR *existpath, const OEMCHAR *newpath) {
+	return((short)rename(existpath, newpath));
+}
+
+short file_dirdelete(const OEMCHAR *path) {
+	return((short)rmdir(path));
+}
