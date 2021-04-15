@@ -251,5 +251,7 @@
 	<true/>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
 </dict>
 </plist>

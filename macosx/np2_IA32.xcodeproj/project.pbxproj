@@ -775,6 +775,7 @@
 		558DA72626251EA50019146B /* wab_rly.h in Headers */ = {isa = PBXBuildFile; fileRef = 558DA71626251EA50019146B /* wab_rly.h */; };
 		558DA72726251EA50019146B /* tgui9680_extern.h in Headers */ = {isa = PBXBuildFile; fileRef = 558DA71726251EA50019146B /* tgui9680_extern.h */; };
 		558DA72826251EA50019146B /* tgui9680_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 558DA71826251EA50019146B /* tgui9680_wrapper.h */; };
+		558DA72A26252D9E0019146B /* np2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C9254055778CB00000103 /* np2.cpp */; };
 		5595B64E1D20F67400DDA319 /* dmav30.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6461D20F67400DDA319 /* dmav30.h */; };
 		5595B64F1D20F67400DDA319 /* dmax86.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6471D20F67400DDA319 /* dmax86.h */; };
 		5595B6501D20F67400DDA319 /* memegc.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6481D20F67400DDA319 /* memegc.h */; };
@@ -793,6 +794,7 @@
 		5595B6701D20F6C400DDA319 /* np2info.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6601D20F6C400DDA319 /* np2info.h */; };
 		5595B6711D20F6C400DDA319 /* softkbd.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6611D20F6C400DDA319 /* softkbd.h */; };
 		5595B6771D20F7C400DDA319 /* mimpidef.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6761D20F7C400DDA319 /* mimpidef.h */; };
+		55A2C4402628EDBF00ACFFFC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A2C43F2628EDBF00ACFFFC /* MainMenu.xib */; };
 		55CE2B68208BD3660080EE48 /* fddseek.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55CE2B57208BD3660080EE48 /* fddseek.wav */; };
 		55CE2B69208BD3660080EE48 /* fddseek1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55CE2B58208BD3660080EE48 /* fddseek1.wav */; };
 /* End PBXBuildFile section */
@@ -1464,6 +1466,7 @@
 		5595B6641D20F6C400DDA319 /* softkbd2.res */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 8; path = softkbd2.res; sourceTree = "<group>"; };
 		5595B6651D20F6C400DDA319 /* softkbd3.res */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 8; path = softkbd3.res; sourceTree = "<group>"; };
 		5595B6761D20F7C400DDA319 /* mimpidef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mimpidef.h; sourceTree = "<group>"; };
+		55A2C43F2628EDBF00ACFFFC /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		55A8D1DB1D20860B00A85AC9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ja; path = ja.lproj/np2.nib; sourceTree = "<group>"; };
 		55CE2B57208BD3660080EE48 /* fddseek.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fddseek.wav; sourceTree = "<group>"; };
 		55CE2B58208BD3660080EE48 /* fddseek1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fddseek1.wav; sourceTree = "<group>"; };
@@ -1769,6 +1772,7 @@
 		20286C2CFDCF999611CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55A2C43F2628EDBF00ACFFFC /* MainMenu.xib */,
 				55CE2B54208BD3660080EE48 /* Icon */,
 				55842EC91D2084C60017B417 /* Info-np2__Upgraded_.plist */,
 				9603DE2B06CFCD4800012F11 /* Localizable.strings */,
@@ -1837,22 +1841,22 @@
 		558DA3BE262515990019146B /* fd */ = {
 			isa = PBXGroup;
 			children = (
-				558DA3BF262515990019146B /* fdd_nfd.c */,
-				558DA3C0262515990019146B /* fdd_head_d88.h */,
 				558DA3C1262515990019146B /* fdd_bkdsk.c */,
-				558DA3C2262515990019146B /* fdd_head_vfdd.h */,
+				558DA3C9262515990019146B /* fdd_bkdsk.h */,
+				558DA3CC262515990019146B /* fdd_d88.c */,
 				558DA3C3262515990019146B /* fdd_d88.h */,
 				558DA3C4262515990019146B /* fdd_dcp.c */,
+				558DA3CB262515990019146B /* fdd_dcp.h */,
+				558DA3C0262515990019146B /* fdd_head_d88.h */,
+				558DA3C8262515990019146B /* fdd_head_dcp.h */,
+				558DA3CD262515990019146B /* fdd_head_nfd.h */,
+				558DA3C2262515990019146B /* fdd_head_vfdd.h */,
+				558DA3BF262515990019146B /* fdd_nfd.c */,
+				558DA3C7262515990019146B /* fdd_nfd.h */,
+				558DA3CE262515990019146B /* fdd_vfdd.c */,
 				558DA3C5262515990019146B /* fdd_vfdd.h */,
 				558DA3C6262515990019146B /* fdd_xdf.c */,
-				558DA3C7262515990019146B /* fdd_nfd.h */,
-				558DA3C8262515990019146B /* fdd_head_dcp.h */,
-				558DA3C9262515990019146B /* fdd_bkdsk.h */,
 				558DA3CA262515990019146B /* fdd_xdf.h */,
-				558DA3CB262515990019146B /* fdd_dcp.h */,
-				558DA3CC262515990019146B /* fdd_d88.c */,
-				558DA3CD262515990019146B /* fdd_head_nfd.h */,
-				558DA3CE262515990019146B /* fdd_vfdd.c */,
 			);
 			path = fd;
 			sourceTree = "<group>";
@@ -1860,18 +1864,18 @@
 		558DA3D3262515990019146B /* cd */ = {
 			isa = PBXGroup;
 			children = (
-				558DA3D4262515990019146B /* cdd_cue.h */,
-				558DA3D5262515990019146B /* cdd_real.c */,
 				558DA3D6262515990019146B /* cdd_ccd.c */,
-				558DA3D7262515990019146B /* cdd_iso.h */,
-				558DA3D8262515990019146B /* cdd_nrg.c */,
-				558DA3D9262515990019146B /* cdd_mds.h */,
-				558DA3DA262515990019146B /* cdd_nrg.h */,
-				558DA3DB262515990019146B /* cdd_iso.c */,
-				558DA3DC262515990019146B /* cdd_real.h */,
-				558DA3DD262515990019146B /* cdd_cue.c */,
 				558DA3DE262515990019146B /* cdd_ccd.h */,
+				558DA3DD262515990019146B /* cdd_cue.c */,
+				558DA3D4262515990019146B /* cdd_cue.h */,
+				558DA3DB262515990019146B /* cdd_iso.c */,
+				558DA3D7262515990019146B /* cdd_iso.h */,
 				558DA3DF262515990019146B /* cdd_mds.c */,
+				558DA3D9262515990019146B /* cdd_mds.h */,
+				558DA3D8262515990019146B /* cdd_nrg.c */,
+				558DA3DA262515990019146B /* cdd_nrg.h */,
+				558DA3D5262515990019146B /* cdd_real.c */,
+				558DA3DC262515990019146B /* cdd_real.h */,
 			);
 			path = cd;
 			sourceTree = "<group>";
@@ -2363,8 +2367,6 @@
 		967C9177055778CB00000103 /* cbus */ = {
 			isa = PBXGroup;
 			children = (
-				558DA6EA26251C8D0019146B /* smpu98.c */,
-				558DA6E926251C8D0019146B /* smpu98.h */,
 				967C9178055778CB00000103 /* amd98.c */,
 				556F2A8E1D209A5700335DF9 /* amd98.h */,
 				558DA6DF26251BBF0019146B /* atapicmd.c */,
@@ -2411,6 +2413,8 @@
 				556F2A9A1D209A5700335DF9 /* scsicmd.h */,
 				9645C2A105BF64FB0090B4FD /* scsiio.c */,
 				556F2A9B1D209A5700335DF9 /* scsiio.h */,
+				558DA6EA26251C8D0019146B /* smpu98.c */,
+				558DA6E926251C8D0019146B /* smpu98.h */,
 			);
 			path = cbus;
 			sourceTree = "<group>";
@@ -2462,9 +2466,6 @@
 		967C91C5055778CB00000103 /* io */ = {
 			isa = PBXGroup;
 			children = (
-				558DA6FB26251E050019146B /* pci */,
-				558DA6F826251DF80019146B /* pegc.c */,
-				558DA6F726251DF80019146B /* pegc.h */,
 				967C91C6055778CB00000103 /* artic.c */,
 				556F2AFC1D20A08500335DF9 /* artic.h */,
 				967C91C8055778CB00000103 /* cgrom.c */,
@@ -2502,8 +2503,11 @@
 				556F2B0C1D20A08500335DF9 /* nmiio.h */,
 				967C91EB055778CB00000103 /* np2sysp.c */,
 				556F2B2A1D20A09900335DF9 /* np2sysp.h */,
+				558DA6FB26251E050019146B /* pci */,
 				962EA933060C86D500BD925D /* pcidev.c */,
 				556F2B2B1D20A09900335DF9 /* pcidev.h */,
+				558DA6F826251DF80019146B /* pegc.c */,
+				558DA6F726251DF80019146B /* pegc.h */,
 				967C91ED055778CB00000103 /* pic.c */,
 				556F2B0D1D20A08500335DF9 /* pic.h */,
 				967C91EF055778CB00000103 /* pit.c */,
@@ -2622,22 +2626,9 @@
 		967C9275055778CC00000103 /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				558DA70426251E7B0019146B /* opntimer.c */,
-				558DA70526251E7B0019146B /* opntimer.h */,
-				558DA6F326251D240019146B /* oplgen.h */,
-				558DA6F426251D240019146B /* oplgenc.c */,
-				558DA6F126251CDB0019146B /* oplgencfg.h */,
-				558DA6EE26251CD00019146B /* opna.c */,
-				558DA6ED26251CCF0019146B /* opna.h */,
-				558DA6E726251C4C0019146B /* oplgeng.c */,
-				558DA6AA2625193D0019146B /* mame */,
-				9645C2D005BFA3B90090B4FD /* getsnd */,
-				967C929A055778CC00000103 /* vermouth */,
 				556F2B2E1D20A0DC00335DF9 /* adpcm.h */,
 				967C9277055778CC00000103 /* adpcmc.c */,
 				967C9278055778CC00000103 /* adpcmg.c */,
-				558DA6C526251A130019146B /* pcmmix.c */,
-				558DA6C626251A130019146B /* pcmmix.h */,
 				556F2B2F1D20A0DC00335DF9 /* beep.h */,
 				967C927A055778CC00000103 /* beepc.c */,
 				967C927B055778CC00000103 /* beepg.c */,
@@ -2646,15 +2637,26 @@
 				967C927E055778CC00000103 /* cs4231g.c */,
 				967C927F055778CC00000103 /* fmboard.c */,
 				556F2B311D20A0DC00335DF9 /* fmboard.h */,
+				9645C2D005BFA3B90090B4FD /* getsnd */,
+				558DA6AA2625193D0019146B /* mame */,
+				558DA6CA26251A5E0019146B /* opl3.c */,
+				558DA6CC26251A5E0019146B /* opl3.h */,
+				558DA6F326251D240019146B /* oplgen.h */,
+				558DA6F426251D240019146B /* oplgenc.c */,
+				558DA6F126251CDB0019146B /* oplgencfg.h */,
+				558DA6E726251C4C0019146B /* oplgeng.c */,
+				558DA6EE26251CD00019146B /* opna.c */,
+				558DA6ED26251CCF0019146B /* opna.h */,
 				556F2B331D20A0DC00335DF9 /* opngen.h */,
 				967C9284055778CC00000103 /* opngenc.c */,
 				967C9285055778CC00000103 /* opngeng.c */,
-				558DA6CA26251A5E0019146B /* opl3.c */,
-				558DA6CC26251A5E0019146B /* opl3.h */,
-				558DA6CB26251A5E0019146B /* oplgencfg.h */,
+				558DA70426251E7B0019146B /* opntimer.c */,
+				558DA70526251E7B0019146B /* opntimer.h */,
 				556F2B341D20A0DC00335DF9 /* pcm86.h */,
 				967C9287055778CC00000103 /* pcm86c.c */,
 				967C9288055778CC00000103 /* pcm86g.c */,
+				558DA6C526251A130019146B /* pcmmix.c */,
+				558DA6C626251A130019146B /* pcmmix.h */,
 				556F2B351D20A0DC00335DF9 /* psggen.h */,
 				967C928A055778CC00000103 /* psggenc.c */,
 				967C928B055778CC00000103 /* psggeng.c */,
@@ -2671,6 +2673,8 @@
 				556F2B3B1D20A0DC00335DF9 /* tms3631.h */,
 				967C9298055778CC00000103 /* tms3631c.c */,
 				967C9299055778CC00000103 /* tms3631g.c */,
+				967C929A055778CC00000103 /* vermouth */,
+				558DA6CB26251A5E0019146B /* oplgencfg.h */,
 			);
 			path = sound;
 			sourceTree = "<group>";
@@ -2735,7 +2739,6 @@
 		96EBF1FE05DD686500DA3983 /* ia32 */ = {
 			isa = PBXGroup;
 			children = (
-				96EBF21205DD686500DA3983 /* instructions */,
 				96EBF20105DD686500DA3983 /* cpu_io.c */,
 				556F2ABE1D209AE300335DF9 /* cpu_io.h */,
 				96EBF20305DD686500DA3983 /* cpu_mem.c */,
@@ -2753,6 +2756,7 @@
 				96EBF20D05DD686500DA3983 /* ia32.c */,
 				96EBF21005DD686500DA3983 /* inst_table.c */,
 				556F2AC91D209B1900335DF9 /* inst_table.h */,
+				96EBF21205DD686500DA3983 /* instructions */,
 				96EBF23005DD686500DA3983 /* interface.c */,
 				556F2AC41D209AF600335DF9 /* interface.h */,
 				96EBF23205DD686500DA3983 /* paging.c */,
@@ -2770,11 +2774,6 @@
 		96EBF21205DD686500DA3983 /* instructions */ = {
 			isa = PBXGroup;
 			children = (
-				558DA417262516A20019146B /* sse */,
-				558DA41A262516A20019146B /* sse2 */,
-				558DA414262516A20019146B /* sse3 */,
-				558DA409262516800019146B /* mmx */,
-				96EBF21F05DD686500DA3983 /* fpu */,
 				96EBF21305DD686500DA3983 /* bin_arith.c */,
 				556F2AE01D209B9900335DF9 /* bin_arith.h */,
 				96EBF21505DD686500DA3983 /* bit_byte.c */,
@@ -2787,15 +2786,20 @@
 				556F2AE41D209B9900335DF9 /* dec_arith.h */,
 				96EBF21D05DD686500DA3983 /* flag_ctrl.c */,
 				556F2AE51D209B9900335DF9 /* flag_ctrl.h */,
+				96EBF21F05DD686500DA3983 /* fpu */,
 				556F2BCD1D20BB7500335DF9 /* fpu.c */,
 				96EBF22205DD686500DA3983 /* logic_arith.c */,
 				556F2AE61D209B9900335DF9 /* logic_arith.h */,
 				96EBF22405DD686500DA3983 /* misc_inst.c */,
 				556F2AE71D209B9900335DF9 /* misc_inst.h */,
+				558DA409262516800019146B /* mmx */,
 				96EBF22605DD686500DA3983 /* seg_reg.c */,
 				556F2AE81D209B9900335DF9 /* seg_reg.h */,
 				96EBF22805DD686500DA3983 /* shift_rotate.c */,
 				556F2AE91D209B9900335DF9 /* shift_rotate.h */,
+				558DA417262516A20019146B /* sse */,
+				558DA41A262516A20019146B /* sse2 */,
+				558DA414262516A20019146B /* sse3 */,
 				96EBF22C05DD686500DA3983 /* string_inst.c */,
 				556F2AEA1D209B9900335DF9 /* string_inst.h */,
 				96EBF22E05DD686500DA3983 /* system_inst.c */,
@@ -3154,6 +3158,7 @@
 				55842DE31D2084C60017B417 /* Localizable.strings in Resources */,
 				55CE2B68208BD3660080EE48 /* fddseek.wav in Resources */,
 				55CE2B69208BD3660080EE48 /* fddseek1.wav in Resources */,
+				55A2C4402628EDBF00ACFFFC /* MainMenu.xib in Resources */,
 				558DA32E2622E8500019146B /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3723,6 +3728,7 @@
 				555F699A208BDCC10002E7FF /* textcnv.c in Sources */,
 				558DA5A6262518590019146B /* extF80M_eq.c in Sources */,
 				558DA5C1262518590019146B /* s_propagateNaNF128UI.c in Sources */,
+				558DA72A26252D9E0019146B /* np2.cpp in Sources */,
 				555F699C208BDCC10002E7FF /* ucs2sjis.c in Sources */,
 				558DA686262518590019146B /* ui32_to_f64.c in Sources */,
 				558DA72226251EA50019146B /* tgui9680.c in Sources */,

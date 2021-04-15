@@ -35,7 +35,6 @@
 #include	"hid.h"
 #include	"midiopt.h"
 #include	"macalert.h"
-#include	"np2opening.h"
 #include	"toolwin.h"
 #include	"aboutdlg.h"
 #include	"keystat.h"
@@ -46,10 +45,11 @@
 // #define	OPENING_WAIT	1500
 
 
+		NP2OSCFG	np2oscfg = {
 #if !defined(SUPPORT_PC9821)
-		NP2OSCFG	np2oscfg = {"Neko Project IIx",						//titles
+			"Neko Project IIx",						//titles
 #else
-		NP2OSCFG	np2oscfg = {"Neko Project 21x",						//titles
+			"Neko Project 21x",
 #endif
 								-1,										//winx
 								-1,										//winy
@@ -82,7 +82,7 @@ static	UINT		waitcnt = 0;
 static	UINT		framemax = 1;
         BYTE		scrnmode = 0;
 
-
+#if 0
 #define DRAG_THRESHOLD		5
 
 #ifndef NP2GCC
@@ -1408,3 +1408,4 @@ static void toggleFullscreen(void) {
     CheckMenuItem(GetMenuHandle(IDM_SCREEN), LoWord(IDM_FULLSCREEN), scrnmode & SCRNMODE_FULLSCREEN);
     soundmng_play();
 }
+#endif
