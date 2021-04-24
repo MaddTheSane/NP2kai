@@ -794,7 +794,7 @@
 		5595B6701D20F6C400DDA319 /* np2info.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6601D20F6C400DDA319 /* np2info.h */; };
 		5595B6711D20F6C400DDA319 /* softkbd.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6611D20F6C400DDA319 /* softkbd.h */; };
 		5595B6771D20F7C400DDA319 /* mimpidef.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595B6761D20F7C400DDA319 /* mimpidef.h */; };
-		55A2C4402628EDBF00ACFFFC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A2C43F2628EDBF00ACFFFC /* MainMenu.xib */; };
+		55C5E955263412F9003863E3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C5E957263412F9003863E3 /* MainMenu.xib */; };
 		55CE2B68208BD3660080EE48 /* fddseek.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55CE2B57208BD3660080EE48 /* fddseek.wav */; };
 		55CE2B69208BD3660080EE48 /* fddseek1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55CE2B58208BD3660080EE48 /* fddseek1.wav */; };
 /* End PBXBuildFile section */
@@ -1466,8 +1466,8 @@
 		5595B6641D20F6C400DDA319 /* softkbd2.res */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 8; path = softkbd2.res; sourceTree = "<group>"; };
 		5595B6651D20F6C400DDA319 /* softkbd3.res */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 8; path = softkbd3.res; sourceTree = "<group>"; };
 		5595B6761D20F7C400DDA319 /* mimpidef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mimpidef.h; sourceTree = "<group>"; };
-		55A2C43F2628EDBF00ACFFFC /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		55A8D1DB1D20860B00A85AC9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ja; path = ja.lproj/np2.nib; sourceTree = "<group>"; };
+		55C5E9582634130B003863E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		55CE2B57208BD3660080EE48 /* fddseek.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fddseek.wav; sourceTree = "<group>"; };
 		55CE2B58208BD3660080EE48 /* fddseek1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fddseek1.wav; sourceTree = "<group>"; };
 		9603DE2C06CFCD4800012F11 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1772,7 +1772,7 @@
 		20286C2CFDCF999611CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				55A2C43F2628EDBF00ACFFFC /* MainMenu.xib */,
+				55C5E957263412F9003863E3 /* MainMenu.xib */,
 				55CE2B54208BD3660080EE48 /* Icon */,
 				55842EC91D2084C60017B417 /* Info-np2__Upgraded_.plist */,
 				9603DE2B06CFCD4800012F11 /* Localizable.strings */,
@@ -3133,9 +3133,10 @@
 			};
 			buildConfigurationList = 55842DB51D20843E0017B417 /* Build configuration list for PBXProject "np2_IA32" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 1;
 			knownRegions = (
+				Base,
 				en,
 				ja,
 			);
@@ -3158,7 +3159,7 @@
 				55842DE31D2084C60017B417 /* Localizable.strings in Resources */,
 				55CE2B68208BD3660080EE48 /* fddseek.wav in Resources */,
 				55CE2B69208BD3660080EE48 /* fddseek1.wav in Resources */,
-				55A2C4402628EDBF00ACFFFC /* MainMenu.xib in Resources */,
+				55C5E955263412F9003863E3 /* MainMenu.xib in Resources */,
 				558DA32E2622E8500019146B /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3753,6 +3754,14 @@
 				556F2A671D208E0800335DF9 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55C5E957263412F9003863E3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55C5E9582634130B003863E3 /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		9603DE2B06CFCD4800012F11 /* Localizable.strings */ = {

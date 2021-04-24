@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>Japanese</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -208,7 +208,7 @@
 	<key>CFBundleIconFile</key>
 	<string>Neko Project IIx.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.retropc.Neko Project IIx</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -223,7 +223,11 @@
 	<string>0.81</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
 </dict>
 </plist>

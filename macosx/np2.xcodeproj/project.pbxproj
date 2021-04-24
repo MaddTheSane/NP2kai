@@ -186,7 +186,7 @@
 		551E8CB01D208992005105D3 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9668883E05EFDE2500C9A4EE /* CoreMIDI.framework */; };
 		551E8CB21D208992005105D3 /* np2.r in Rez */ = {isa = PBXBuildFile; fileRef = 9603DE7806CFEA9100012F11 /* np2.r */; };
 		555F696C208BDB080002E7FF /* HIDUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555F696B208BDB080002E7FF /* HIDUtilities.framework */; };
-		555F6978208BDB3D0002E7FF /* HIDUtilities.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 555F696B208BDB080002E7FF /* HIDUtilities.framework */; };
+		555F6978208BDB3D0002E7FF /* HIDUtilities.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 555F696B208BDB080002E7FF /* HIDUtilities.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		555F69C5208BE34B0002E7FF /* codecnv.h in Headers */ = {isa = PBXBuildFile; fileRef = 555F69B9208BE34B0002E7FF /* codecnv.h */; };
 		555F69C6208BE34B0002E7FF /* eucsjis.c in Sources */ = {isa = PBXBuildFile; fileRef = 555F69BA208BE34B0002E7FF /* eucsjis.c */; };
 		555F69C7208BE34B0002E7FF /* eucucs2.c in Sources */ = {isa = PBXBuildFile; fileRef = 555F69BB208BE34B0002E7FF /* eucucs2.c */; };
@@ -264,6 +264,8 @@
 		55C5E94E26340EBB003863E3 /* np2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C9254055778CB00000103 /* np2.cpp */; };
 		55C5E95126340EF1003863E3 /* pcmmix.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C5E94F26340EF1003863E3 /* pcmmix.c */; };
 		55C5E95226340EF1003863E3 /* pcmmix.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C5E95026340EF1003863E3 /* pcmmix.h */; };
+		55C5E9542634123D003863E3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C5E9532634123D003863E3 /* CoreText.framework */; };
+		55C5E95B2634132A003863E3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C5E9592634132A003863E3 /* MainMenu.xib */; };
 		55CE2AA8208BCDA60080EE48 /* Non-localized.r in Rez */ = {isa = PBXBuildFile; fileRef = 55CE2AA7208BCDA60080EE48 /* Non-localized.r */; };
 		55E7AA02263403DA00EDC6DE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E7AA01263403DA00EDC6DE /* Media.xcassets */; };
 		55E7AA10263404AB00EDC6DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55E7AA0D263404AB00EDC6DE /* InfoPlist.strings */; };
@@ -560,6 +562,8 @@
 		55C5E94B26340D8C003863E3 /* smpu98.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smpu98.h; sourceTree = "<group>"; };
 		55C5E94F26340EF1003863E3 /* pcmmix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pcmmix.c; sourceTree = "<group>"; };
 		55C5E95026340EF1003863E3 /* pcmmix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcmmix.h; sourceTree = "<group>"; };
+		55C5E9532634123D003863E3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		55C5E95A2634132A003863E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		55CE2AA7208BCDA60080EE48 /* Non-localized.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = "Non-localized.r"; sourceTree = "<group>"; };
 		55E7AA01263403DA00EDC6DE /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55E7AA0E263404AB00EDC6DE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -976,6 +980,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C5E9542634123D003863E3 /* CoreText.framework in Frameworks */,
 				551E8CAC1D208992005105D3 /* Carbon.framework in Frameworks */,
 				551E8CAE1D208992005105D3 /* IOKit.framework in Frameworks */,
 				551E8CB01D208992005105D3 /* CoreMIDI.framework in Frameworks */,
@@ -999,7 +1004,7 @@
 			children = (
 				20286C2AFDCF999611CA2CEA /* Sources */,
 				20286C2CFDCF999611CA2CEA /* Resources */,
-				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
+				20286C32FDCF999611CA2CEA /* Frameworks */,
 				195DF8C9FE9D4F0611CA2CBB /* Products */,
 			);
 			name = "¬´PROJECTNAME¬ª";
@@ -1048,6 +1053,7 @@
 		20286C2CFDCF999611CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55C5E9592634132A003863E3 /* MainMenu.xib */,
 				55E7AA0C263404AB00EDC6DE /* IIx Resorces */,
 				55CE2AA7208BCDA60080EE48 /* Non-localized.r */,
 				969A8347055A60A500000103 /* Icon */,
@@ -1058,9 +1064,10 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
+		20286C32FDCF999611CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55C5E9532634123D003863E3 /* CoreText.framework */,
 				555F696B208BDB080002E7FF /* HIDUtilities.framework */,
 				9668883E05EFDE2500C9A4EE /* CoreMIDI.framework */,
 				20286C33FDCF999611CA2CEA /* Carbon.framework */,
@@ -1068,7 +1075,7 @@
 				0640BAA5FFF0323A11CA0E50 /* CoreServices.framework */,
 				9608400C054ED1E900000103 /* IOKit.framework */,
 			);
-			name = "External Frameworks and Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		555F69B8208BE34B0002E7FF /* codecnv */ = {
@@ -1989,11 +1996,11 @@
 			};
 			buildConfigurationList = 55842DC91D2084A00017B417 /* Build configuration list for PBXProject "np2" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				en,
 				Base,
+				en,
 				ja,
 			);
 			mainGroup = 20286C29FDCF999611CA2CEA /* ¬´PROJECTNAME¬ª */;
@@ -2011,6 +2018,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551E8BD11D208992005105D3 /* np2.nib in Resources */,
+				55C5E95B2634132A003863E3 /* MainMenu.xib in Resources */,
 				55E7AA15263405B500EDC6DE /* Localizable.strings in Resources */,
 				55E7AA10263404AB00EDC6DE /* InfoPlist.strings in Resources */,
 				55E7AA02263403DA00EDC6DE /* Media.xcassets in Resources */,
@@ -2267,6 +2275,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		55C5E9592634132A003863E3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55C5E95A2634132A003863E3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		55E7AA0D263404AB00EDC6DE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2309,6 +2325,7 @@
 		551E8CB41D208992005105D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Neko Project IIx";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2352,6 +2369,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_REZFLAGS = "-d COMPILING_REZ";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.retropc.Neko-Project-IIx";
 				PRODUCT_NAME = "Neko Project IIx";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2360,6 +2378,7 @@
 		551E8CB51D208992005105D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Neko Project IIx";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -2404,6 +2423,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_REZFLAGS = "-d COMPILING_REZ";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.retropc.Neko-Project-IIx";
 				PRODUCT_NAME = "Neko Project IIx";
 				WRAPPER_EXTENSION = app;
 			};
