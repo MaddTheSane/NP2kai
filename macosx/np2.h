@@ -55,3 +55,5 @@ extern	WindowPtr	hWndMain;
 extern	BOOL		np2running;
 extern	NP2OSCFG	np2oscfg;
 extern	BYTE		scrnmode;
+
+extern char modulefile[MAX_PATH];

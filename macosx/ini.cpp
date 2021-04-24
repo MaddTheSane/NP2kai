@@ -454,3 +454,24 @@ void initsave(void) {
 	ini_write(path, ini_title, iniitem, INIITEMS, TRUE);
 }
 
+static const OEMCHAR s_szExt[] = OEMTEXT(".ini");
+
+void initgetfile(OEMCHAR *lpPath, unsigned int cchPath)
+{
+	const OEMCHAR *lpIni = inifile;
+	if (lpIni)
+	{
+		file_cpyname(lpPath, lpIni, cchPath);
+		//LPCTSTR lpExt = file_getext(lpPath);
+		//if (lpExt[0] != '\0')
+		//{
+		//	file_catname(lpPath, s_szExt, cchPath);
+		//}
+	}
+	else
+	{
+		file_cpyname(lpPath, modulefile, cchPath);
+		file_cutext(lpPath);
+		file_catname(lpPath, s_szExt, cchPath);
+	}
+}

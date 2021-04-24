@@ -81,6 +81,7 @@ static	UINT		framecnt = 0;
 static	UINT		waitcnt = 0;
 static	UINT		framemax = 1;
         BYTE		scrnmode = 0;
+char modulefile[MAX_PATH];
 
 #if 0
 #define DRAG_THRESHOLD		5
