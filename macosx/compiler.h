@@ -180,17 +180,16 @@
 #define	SOUNDRESERVE	80
 
 #if defined(CPUCORE_IA32)
-typedef SInt64			SINT64;
-typedef UInt64			UINT64;
 #define FASTCALL
-#define CPUCALL
-#define MEMCALL
 #define	SUPPORT_PC9821
 #define	SUPPORT_CRT31KHZ
 #define IA32_PAGING_EACHSIZE
 #define	sigjmp_buf				jmp_buf
 #define	sigsetjmp(env, mask)	setjmp(env)
 #define	siglongjmp(env, val)	longjmp(env, val)
+#ifdef msgbox
+#undef msgbox
+#endif
 #define	msgbox(title, msg)		TRACEOUT(("%s", title)); \
 								TRACEOUT(("%s", msg))
 #endif

@@ -9,6 +9,4 @@
 
 #define	NP2GCC
 
-#ifdef __i386__
 #define CPUCORE_IA32
-#endif

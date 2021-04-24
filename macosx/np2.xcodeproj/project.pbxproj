@@ -261,11 +261,12 @@
 		55C5E94926340D58003863E3 /* opntimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C5E94726340D58003863E3 /* opntimer.h */; };
 		55C5E94C26340D8C003863E3 /* smpu98.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C5E94A26340D8C003863E3 /* smpu98.c */; };
 		55C5E94D26340D8C003863E3 /* smpu98.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C5E94B26340D8C003863E3 /* smpu98.h */; };
-		55C5E94E26340EBB003863E3 /* np2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C9254055778CB00000103 /* np2.cpp */; };
+		55C5E94E26340EBB003863E3 /* np2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 967C9254055778CB00000103 /* np2.mm */; };
 		55C5E95126340EF1003863E3 /* pcmmix.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C5E94F26340EF1003863E3 /* pcmmix.c */; };
 		55C5E95226340EF1003863E3 /* pcmmix.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C5E95026340EF1003863E3 /* pcmmix.h */; };
 		55C5E9542634123D003863E3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C5E9532634123D003863E3 /* CoreText.framework */; };
 		55C5E95B2634132A003863E3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C5E9592634132A003863E3 /* MainMenu.xib */; };
+		55C5ECAE2634B68A003863E3 /* macalert.mm in Sources */ = {isa = PBXBuildFile; fileRef = 967C9229055778CB00000103 /* macalert.mm */; };
 		55CE2AA8208BCDA60080EE48 /* Non-localized.r in Rez */ = {isa = PBXBuildFile; fileRef = 55CE2AA7208BCDA60080EE48 /* Non-localized.r */; };
 		55E7AA02263403DA00EDC6DE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E7AA01263403DA00EDC6DE /* Media.xcassets */; };
 		55E7AA10263404AB00EDC6DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55E7AA0D263404AB00EDC6DE /* InfoPlist.strings */; };
@@ -883,7 +884,7 @@
 		967C9223055778CB00000103 /* configure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = configure.cpp; sourceTree = "<group>"; };
 		967C9225055778CB00000103 /* dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dialog.cpp; sourceTree = "<group>"; };
 		967C9227055778CB00000103 /* dialogutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dialogutils.cpp; sourceTree = "<group>"; };
-		967C9229055778CB00000103 /* macalert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = macalert.cpp; sourceTree = "<group>"; };
+		967C9229055778CB00000103 /* macalert.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macalert.mm; sourceTree = "<group>"; };
 		967C922B055778CB00000103 /* macnewdisk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = macnewdisk.cpp; sourceTree = "<group>"; };
 		967C922D055778CB00000103 /* midiopt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = midiopt.cpp; sourceTree = "<group>"; };
 		967C922F055778CB00000103 /* screenopt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = screenopt.cpp; sourceTree = "<group>"; };
@@ -898,7 +899,7 @@
 		967C924D055778CB00000103 /* macossub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = macossub.cpp; sourceTree = "<group>"; };
 		967C924F055778CB00000103 /* menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		967C9251055778CB00000103 /* mousemng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mousemng.cpp; sourceTree = "<group>"; };
-		967C9254055778CB00000103 /* np2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = np2.cpp; sourceTree = "<group>"; };
+		967C9254055778CB00000103 /* np2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = np2.mm; sourceTree = "<group>"; };
 		967C9263055778CC00000103 /* scrnmng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scrnmng.cpp; sourceTree = "<group>"; };
 		967C9265055778CC00000103 /* soundmng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundmng.cpp; sourceTree = "<group>"; };
 		967C9267055778CC00000103 /* soundrecording.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = soundrecording.cpp; sourceTree = "<group>"; };
@@ -1510,7 +1511,7 @@
 				55EF647B208D4E110059755A /* menu.h */,
 				967C9251055778CB00000103 /* mousemng.cpp */,
 				55EF6478208D4E110059755A /* mousemng.h */,
-				967C9254055778CB00000103 /* np2.cpp */,
+				967C9254055778CB00000103 /* np2.mm */,
 				55EF6484208D4E120059755A /* np2.h */,
 				55EF6486208D4E120059755A /* np2gcc.h */,
 				55EF648F208D4E120059755A /* oemtext.h */,
@@ -1548,7 +1549,7 @@
 				55EF6462208D4DB30059755A /* dialog.h */,
 				967C9227055778CB00000103 /* dialogutils.cpp */,
 				55EF6468208D4DB30059755A /* dialogutils.h */,
-				967C9229055778CB00000103 /* macalert.cpp */,
+				967C9229055778CB00000103 /* macalert.mm */,
 				55EF6467208D4DB30059755A /* macalert.h */,
 				9668F093069F722E00E35005 /* macclnd.cpp */,
 				55EF6469208D4DB30059755A /* macclnd.h */,
@@ -2086,6 +2087,7 @@
 				551E8C021D208992005105D3 /* pc9861k.c in Sources */,
 				551E8C031D208992005105D3 /* pcm86io.c in Sources */,
 				551E8C041D208992005105D3 /* diskdrv.c in Sources */,
+				55C5ECAE2634B68A003863E3 /* macalert.mm in Sources */,
 				551E8C061D208992005105D3 /* fdd_mtr.c in Sources */,
 				55E7AA5226340B1A00EDC6DE /* ct1741io.c in Sources */,
 				551E8C091D208992005105D3 /* newdisk.c in Sources */,
@@ -2213,7 +2215,7 @@
 				55C5E92426340CB2003863E3 /* oplgeng.c in Sources */,
 				551E8C811D208992005105D3 /* cmndraw.c in Sources */,
 				551E8C821D208992005105D3 /* cmver.c in Sources */,
-				55C5E94E26340EBB003863E3 /* np2.cpp in Sources */,
+				55C5E94E26340EBB003863E3 /* np2.mm in Sources */,
 				551E8C831D208992005105D3 /* dipswbmp.c in Sources */,
 				551E8C841D208992005105D3 /* keydisp.c in Sources */,
 				55E7AA202634092D00EDC6DE /* utf8ucs4.c in Sources */,

@@ -416,7 +416,7 @@ extern LARGE_INTEGER asynccpu_clockcount;
 #endif
 
 #if defined(CPUCORE_IA32)
-extern int GetCpuTypeIndex();
+extern int GetCpuTypeIndex(void);
 extern int SetCpuTypeIndex(UINT index);
 #endif
 
