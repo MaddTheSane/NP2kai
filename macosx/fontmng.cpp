@@ -1,73 +1,57 @@
 #include	"compiler.h"
 #include	"fontmng.h"
+#include <CoreText/CoreText.h>
+#include <CoreGraphics/CoreGraphics.h>
 
-
-typedef struct {
+typedef struct _FNTMNG {
 	int				fontsize;
 	UINT			fonttype;
 	int				fontwidth;
 	int				fontheight;
 
-	GWorldPtr		gw;
-	PixMapHandle	pm;
-	Rect			rect;
-	RGBColor		bg;
-	RGBColor		fg;
-	short			fontid;
+	CGContextRef	gw;
+	CGRect			rect;
+	CGColorRef		bg;
+	CGColorRef		fg;
+	CTFontRef		fontid;
 } _FNTMNG, *FNTMNG;
 
 
-extern	WindowPtr		hWndMain;
+/**
+ * Get charactor
+ * @param[in,out] lppString Pointer
+ * @return Charactor
+ */
+static UINT16 GetChar(const char** lppString)
+{
+	const char *lpString;
+	UINT16 c;
 
-static const BYTE jis2dtbl[94*2] = {
-		0x85,0x40,0x85,0x41,0x85,0x42,0x85,0x43,0x85,0x44,0x85,0x45,0x85,0x46,
-		0x85,0x47,0x85,0x48,0x85,0x49,0x85,0x4a,0x85,0x4b,0x85,0x4c,0x85,0x4d,
-		0x85,0x4e,0x85,0x4f,0x85,0x50,0x85,0x51,0x85,0x52,0x85,0x53,0x85,0x9f,
-		0x85,0xa0,0x85,0xa1,0x85,0xa2,0x85,0xa3,0x85,0xa4,0x85,0xa5,0x85,0xa6,
-		0x85,0xa7,0x85,0xa8,0x81,0x40,0x87,0x9f,0x87,0xa2,0x87,0xa0,0x87,0xa1,
-		0x87,0xa9,0x87,0xab,0x87,0xa7,0x87,0xa8,0x87,0xac,0x87,0xaf,0x87,0xb0,
-		0x87,0xb3,0x87,0xb2,0x87,0xb5,0x87,0xad,0x87,0xb4,0x86,0x40,0x86,0x42,
-		0x86,0x48,0x86,0x4a,0x86,0x4c,0x86,0x4d,0x86,0x46,0x81,0x40,0x81,0x40,
-		0x81,0x40,0x81,0x40,0x81,0x40,0x81,0x40,0x81,0x40,0x81,0x40,0x87,0xe8,
-		0x88,0x54,0x88,0x55,0x86,0x9b,0x86,0x9c,0x86,0x9d,0x87,0x93,0x87,0x94,
-		0x87,0x95,0x87,0x96,0x87,0x97,0x87,0x4d,0x87,0x50,0x87,0x4b,0x87,0xe5,
-		0x87,0xe6,0x87,0xe7,0x81,0xe0,0x81,0xdf,0x81,0xe7,0x88,0x40,0x83,0xb0,
-		0x81,0xe3,0x81,0xdb,0x81,0xda,0x88,0x41,0x88,0x42,0x81,0xe6,0x81,0xbf,
-		0x81,0xbe,0x81,0x40,0x81,0x40};
-
-static int getsjis1(char *dst, const char *src) {
-
-	int		pos;
-
-	if (src) {
-		if ((((src[0] ^ 0x20) - 0xa1) & 0xff) < 0x3c) {
-			if (src[1]) {
-				if (((BYTE)src[0] == 0x87) &&
-					((BYTE)src[1] >= 0x40) && ((BYTE)src[1] < 0x9f)) {
-					pos = (BYTE)src[1] - 0x40;
-					if (pos >= 0x40) {
-						pos--;
-					}
-					dst[0] = jis2dtbl[pos*2+0];
-					dst[1] = jis2dtbl[pos*2+1];
-				}
-				else {
-					dst[0] = src[0];
-					dst[1] = src[1];
-				}
-				dst[2] = '\0';
-				return(2);
-			}
-		}
-		else if (src[0]) {
-			if (dst) {
-				dst[0] = src[0];
-				dst[1] = '\0';
-			}
-			return(1);
-		}
+	lpString = *lppString;
+	if (lpString == NULL)
+	{
+		return 0;
 	}
-	return(0);
+
+	c = 0;
+	if ((lpString[0] & 0x80) == 0)
+	{
+		c = lpString[0] & 0x7f;
+		lpString++;
+	}
+	else if (((lpString[0] & 0xe0) == 0xc0) && ((lpString[1] & 0xc0) == 0x80))
+	{
+		c = ((lpString[0] & 0x1f) << 6) | (lpString[1] & 0x3f);
+		lpString += 2;
+	}
+	else if (((lpString[0] & 0xf0) == 0xe0) && ((lpString[1] & 0xc0) == 0x80) && ((lpString[2] & 0xc0) == 0x80))
+	{
+		c = ((lpString[0] & 0x0f) << 12) | ((lpString[1] & 0x3f) << 6) | (lpString[2] & 0x3f);
+		lpString += 3;
+	}
+
+	*lppString = lpString;
+	return c;
 }
 
 
@@ -98,22 +82,27 @@ void *fontmng_create(int size, UINT type, const TCHAR *fontface) {
 
 	allocsize = sizeof(fnt);
 	allocsize += fontalign;
+	CFStringRef fontName = CFSTR("Osaka-Mono");
 
-	SetRect(&fnt.rect, 0, 0, fnt.fontwidth, fnt.fontheight);
-	if (NewGWorld(&fnt.gw, 32, &fnt.rect, NULL, NULL, useTempMem) != noErr) {
+	fnt.rect = CGRectMake(0, 0, fnt.fontwidth, fnt.fontheight);
+	CGColorSpaceRef colorRef = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+	
+	fnt.gw = CGBitmapContextCreate(NULL, fnt.fontwidth, fnt.fontheight, 32, 4 * fnt.fontwidth, colorRef, kCGBitmapByteOrderDefault);
+	CGColorSpaceRelease(colorRef);
+	if (!fnt.gw) {
 		return(NULL);
 	}
-	fnt.pm = GetGWorldPixMap(fnt.gw);
-	GetFNum("\pOsaka\201\174\223\231\225\235", &fnt.fontid);
-	fnt.fg.red = 0xffff;
-	fnt.fg.green = 0xffff;
-	fnt.fg.blue = 0xffff;
+	fnt.fg = (CGColorRef)CFRetain(CGColorGetConstantColor(kCGColorWhite));
+	fnt.bg = (CGColorRef)CFRetain(CGColorGetConstantColor(kCGColorBlack));
+	fnt.fontid = CTFontCreateWithName(fontName, size, NULL);
 	ret = _MALLOC(allocsize, "font mng");
 	if (ret) {
 		CopyMemory(ret, &fnt, sizeof(fnt));
-	}
-	else {
-		DisposeGWorld(fnt.gw);
+	} else {
+		CGColorRelease(fnt.fg);
+		CGColorRelease(fnt.bg);
+		CGContextRelease(fnt.gw);
+		CFRelease(fnt.fontid);
 	}
 	(void)fontface;
 	return(ret);
@@ -126,95 +115,147 @@ void fontmng_destroy(void *hdl) {
 
 	fhdl = (FNTMNG)hdl;
 	if (fhdl) {
-		DisposeGWorld(fhdl->gw);
+		CGColorRelease(fhdl->bg);
+		CGColorRelease(fhdl->fg);
+		CGContextRelease(fhdl->gw);
+		CFRelease(fhdl->fontid);
 		free(fhdl);
 	}
 }
 
 
-static void getlength1(FNTMNG fhdl, FNTDAT fdat,
-											const char *string, int length) {
+/**
+ * Sets font header (TTF)
+ * @param[in] _this Instance
+ * @param[out] fdat Data header
+ * @param[in] s SDL_Surface
+ */
+static void TTFSetFontHeader(FNTMNG _this, FNTDAT fdat/*, const SDL_Surface *s*/)
+{
+	int width;
+	int height;
+	int pitch;
 
-	if (length < 2) {
-		fdat->width = fhdl->fontwidth;
-		fdat->pitch = (fhdl->fontsize + 1) >> 1;
+//	if (s)
+//	{
+//		width = MIN(s->w, _this->ptsize);
+//		height = MIN(s->h, _this->ptsize);
+//	}
+//	else
+//	{
+		width = _this->fontsize;
+		height = _this->fontsize;
+//	}
+
+	pitch = width;
+	if (_this->fonttype & FDAT_ALIAS)
+	{
+		width = (width + 1) >> 1;
+		pitch = width >> 1;
+		height = (height + 1) >> 1;
 	}
-	else {
-		fdat->width = fhdl->fontwidth;
-		fdat->pitch = fhdl->fontsize;
+	fdat->width = width;
+	fdat->pitch = pitch;
+	fdat->height = height;
+}
+
+/**
+ * Gets font length (TTF)
+ * @param[in] _this Instance
+ * @param[out] fdat Data
+ * @param[in] c Charactor
+ */
+static void TTFGetLength1(FNTMNG _this, FNTDAT fdat, UINT16 c)
+{
+	UINT16 sString[2];
+
+	sString[0] = c;
+	sString[1] = 0;
+	CFStringRef cfString = CFStringCreateWithCharacters(kCFAllocatorDefault, sString, 1);
+//	s = NULL;
+//	if (_this->ttf_font)
+//	{
+//		s = TTF_RenderUNICODE_Solid(_this->ttf_font, sString, s_white);
+//	}
+//	if (s)
+//	{
+//		TTFSetFontHeader(_this, fdat, s);
+//		SDL_FreeSurface(s);
+//	}
+//	else
+//	{
+//		AnkGetLength1(_this, fdat, c);
+//	}
+	CFRelease(cfString);
+}
+
+BOOL fontmng_getsize(void *hdl, const char *lpString, POINT_T *pt)
+{
+	FNTMNG _this;
+	int nWidth;
+	UINT16 c;
+	_FNTDAT fontData;
+
+	_this = (FNTMNG)hdl;
+	if ((_this == NULL) || (lpString == NULL))
+	{
+		return FAILURE;
 	}
-	fdat->height = fhdl->fontheight;
-	(void)string;
+
+	nWidth = 0;
+	while (1 /* EVER */)
+	{
+		c = GetChar(&lpString);
+		if (c == 0)
+		{
+			break;
+		}
+		TTFGetLength1(_this, &fontData, c);
+		nWidth += fontData.pitch;
+	}
+
+	if (pt)
+	{
+		pt->x = nWidth;
+		pt->y = _this->fontsize;
+	}
+	return SUCCESS;
 }
 
 
-BOOL fontmng_getsize(void *hdl, const char *string, POINT_T *pt) {
+BOOL fontmng_getdrawsize(void *hdl, const char *lpString, POINT_T *pt)
+{
+	FNTMNG _this;
+	int nWidth;
+	int nPosX;
+	UINT16 c;
+	_FNTDAT fontData;
 
-	char	buf[4];
-	_FNTDAT	fdat;
-	int		width;
-	int		leng;
-
-	width = 0;
-	if ((hdl == NULL) || (string == NULL)) {
-		goto fmgs_exit;
+	_this = (FNTMNG)hdl;
+	if (_this == NULL)
+	{
+		return FAILURE;
 	}
 
-	buf[2] = '\0';
-	do {
-		leng = getsjis1(buf, string);
-		if (!leng) {
+	nWidth = 0;
+	nPosX = 0;
+	while (1 /* EVER */)
+	{
+		c = GetChar(&lpString);
+		if (c == 0)
+		{
 			break;
 		}
-		string += leng;
-		getlength1((FNTMNG)hdl, &fdat, buf, leng);
-		width += fdat.pitch;
-	} while(1);
-
-	if (pt) {
-		pt->x = width;
-		pt->y = ((FNTMNG)hdl)->fontsize;
+		TTFGetLength1(_this, &fontData, c);
+		nWidth = nPosX + MAX(fontData.width, fontData.pitch);
+		nPosX += fontData.pitch;
 	}
-	return(SUCCESS);
-
-fmgs_exit:
-	return(FAILURE);
-}
-
-
-BOOL fontmng_getdrawsize(void *hdl, const char *string, POINT_T *pt) {
-
-	char	buf[4];
-	_FNTDAT	fdat;
-	int		width;
-	int		posx;
-	int		leng;
-
-	if ((hdl == NULL) || (string == NULL)) {
-		goto fmgds_exit;
+	if (pt)
+	{
+		pt->x = nWidth;
+		pt->y = _this->fontsize;
 	}
-
-	width = 0;
-	posx = 0;
-	do {
-		leng = getsjis1(buf, string);
-		if (!leng) {
-			break;
-		}
-		string += leng;
-		getlength1((FNTMNG)hdl, &fdat, buf, leng);
-		width = posx + max(fdat.width, fdat.pitch);
-		posx += fdat.pitch;
-	} while(1);
-
-	if (pt) {
-		pt->x = width;
-		pt->y = ((FNTMNG)hdl)->fontsize;
-	}
-	return(SUCCESS);
-
-fmgds_exit:
-	return(FAILURE);
+	return SUCCESS;
 }
 
 
@@ -229,6 +270,7 @@ static void fontmng_getchar(FNTMNG fhdl, FNTDAT fdat, const char *string) {
 	FontInfo	info;
 	int			leng;
 	char		buf[4];
+#if 0
 
 	GetGWorld(&gwp, &hgd);
 	LockPixels(fhdl->pm);
@@ -283,6 +325,7 @@ static void fontmng_getchar(FNTMNG fhdl, FNTDAT fdat, const char *string) {
 	RGBForeColor(&bak);
 	UnlockPixels(fhdl->pm);
 	SetGWorld(gwp, hgd);
+#endif
 }
 
 

@@ -267,6 +267,7 @@
 		55C5E9542634123D003863E3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C5E9532634123D003863E3 /* CoreText.framework */; };
 		55C5E95B2634132A003863E3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C5E9592634132A003863E3 /* MainMenu.xib */; };
 		55C5ECAE2634B68A003863E3 /* macalert.mm in Sources */ = {isa = PBXBuildFile; fileRef = 967C9229055778CB00000103 /* macalert.mm */; };
+		55C5ECB32634BFEF003863E3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C5ECB22634BFEF003863E3 /* Cocoa.framework */; };
 		55CE2AA8208BCDA60080EE48 /* Non-localized.r in Rez */ = {isa = PBXBuildFile; fileRef = 55CE2AA7208BCDA60080EE48 /* Non-localized.r */; };
 		55E7AA02263403DA00EDC6DE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E7AA01263403DA00EDC6DE /* Media.xcassets */; };
 		55E7AA10263404AB00EDC6DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55E7AA0D263404AB00EDC6DE /* InfoPlist.strings */; };
@@ -565,6 +566,7 @@
 		55C5E95026340EF1003863E3 /* pcmmix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcmmix.h; sourceTree = "<group>"; };
 		55C5E9532634123D003863E3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		55C5E95A2634132A003863E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		55C5ECB22634BFEF003863E3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		55CE2AA7208BCDA60080EE48 /* Non-localized.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = "Non-localized.r"; sourceTree = "<group>"; };
 		55E7AA01263403DA00EDC6DE /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55E7AA0E263404AB00EDC6DE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -981,6 +983,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C5ECB32634BFEF003863E3 /* Cocoa.framework in Frameworks */,
 				55C5E9542634123D003863E3 /* CoreText.framework in Frameworks */,
 				551E8CAC1D208992005105D3 /* Carbon.framework in Frameworks */,
 				551E8CAE1D208992005105D3 /* IOKit.framework in Frameworks */,
@@ -1068,6 +1071,7 @@
 		20286C32FDCF999611CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55C5ECB22634BFEF003863E3 /* Cocoa.framework */,
 				55C5E9532634123D003863E3 /* CoreText.framework */,
 				555F696B208BDB080002E7FF /* HIDUtilities.framework */,
 				9668883E05EFDE2500C9A4EE /* CoreMIDI.framework */,

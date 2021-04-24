@@ -11,7 +11,7 @@ enum {
 	FDAT_DEPTHBIT		= 8
 };
 
-typedef struct {
+typedef struct _FNTDAT {
 	int		width;
 	int		height;
 	int		pitch;

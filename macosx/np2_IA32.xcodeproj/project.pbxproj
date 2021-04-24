@@ -794,6 +794,7 @@
 		55C5E955263412F9003863E3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C5E957263412F9003863E3 /* MainMenu.xib */; };
 		55C5ECAF2634B69B003863E3 /* macalert.mm in Sources */ = {isa = PBXBuildFile; fileRef = 968D8D8C05F532C900CFB890 /* macalert.mm */; };
 		55C5ECB12634BACC003863E3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C5ECB02634BACC003863E3 /* Cocoa.framework */; };
+		55C5ECB42634C454003863E3 /* fontmng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 967C923F055778CB00000103 /* fontmng.cpp */; };
 		55CE2B68208BD3660080EE48 /* fddseek.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55CE2B57208BD3660080EE48 /* fddseek.wav */; };
 		55CE2B69208BD3660080EE48 /* fddseek1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55CE2B58208BD3660080EE48 /* fddseek1.wav */; };
 /* End PBXBuildFile section */
@@ -3425,6 +3426,7 @@
 				558DA5C9262518590019146B /* extF80_le.c in Sources */,
 				558DA5F2262518590019146B /* s_shiftRightJam256M.c in Sources */,
 				558DA60A262518590019146B /* s_roundToI32.c in Sources */,
+				55C5ECB42634C454003863E3 /* fontmng.cpp in Sources */,
 				55842E2D1D2084C60017B417 /* gpset.c in Sources */,
 				558DA3F8262515990019146B /* cddfile.c in Sources */,
 				55842E2E1D2084C60017B417 /* gput1.c in Sources */,
